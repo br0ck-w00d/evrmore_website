@@ -20,7 +20,7 @@ const resourceItems = ref([
     />
     <div class="content-wrapper">
       <div class="container h-100 d-flex flex-column align-center justify-center">
-        <h2 class="section-title">Banners</h2>
+        <h2 class="section-title">Grab the Banner</h2>
         <div class="resources-grid">
           <div v-for="(item, index) in resourceItems" :key="index" class="resource-item">
             <a :href="item.url" target="_blank" rel="noopener noreferrer" class="image-container">
