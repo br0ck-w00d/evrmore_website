@@ -112,10 +112,10 @@ export default defineComponent({
       <!-- <LandingSectionOne /> -->
       <!-- <LandingSectionTwo /> -->
       <!-- <LandingSectionThree /> -->
-      <LandingSectionAdvantage background-image-name="landing_section_1.svg" />
-      <LandingSectionTeam background-image-name="landing_section_f8.svg" />
-      <LandingSectionSix background-image-name="landing_section_ff.svg" />
-      <LandingSectionSeven background-image-name="landing_section_2ff.svg" />
+      <LandingSectionAdvantage background-image-name="landing_section_f8.svg" />
+      <LandingSectionTeam background-image-name="landing_section_ff.svg" />
+      <LandingSectionSix background-image-name="landing_section_f8.svg" />
+      <LandingSectionSeven background-image-name="landing_section_2f8.svg" />
       <LandingSectionEight />
     </div>
   </div>
@@ -218,8 +218,8 @@ export default defineComponent({
 
   .card-title {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 2.5rem; // 40px in rem
+    font-weight: bold;
     color: #000;
   }
 }
@@ -271,7 +271,7 @@ export default defineComponent({
       padding: 1.75rem;
     }
     .card-title {
-      font-size: 1.6rem;
+      font-size: 2.25rem; // Slightly reduced for better fit
     }
   }
 }
@@ -282,7 +282,7 @@ export default defineComponent({
       padding: 1.5rem;
     }
     .card-title {
-      font-size: 1.5rem;
+      font-size: 2rem; // Further reduced for medium screens
     }
   }
 }
@@ -303,7 +303,7 @@ export default defineComponent({
       padding: 1.25rem;
     }
     .card-title {
-      font-size: 1.5rem;
+      font-size: 1.75rem; // Adjusted for mobile screens
     }
   }
 }
