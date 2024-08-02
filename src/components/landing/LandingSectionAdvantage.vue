@@ -1,8 +1,8 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import thinkImage from '@/assets/advantage/think.svg'
-import hackerImage from '@/assets/advantage/hacker.svg'
-import versatileImage from '@/assets/advantage/versatile.svg'
+import moreSecureImage from '@/assets/advantage/more_secure.svg'
+import easyCreationImage from '@/assets/advantage/versatile.svg'
+import miningSectionHeaderImage from '@/assets/mining/mining_section_header_image.svg'
 
 export default defineComponent({
   name: 'AdvantageSection',
@@ -15,19 +15,19 @@ export default defineComponent({
   setup(props) {
     const resourceItems = ref([
       {
-        text: 'No Smart Contract Hacking',
-        image: hackerImage,
-        url: ''
+        text: 'More Secure',
+        image: moreSecureImage,
+        url: '#'
       },
       {
-        text: 'Versatile, Not Coupled',
-        image: versatileImage,
-        url: ''
+        text: 'Easy Creation',
+        image: easyCreationImage,
+        url: '#'
       },
       {
-        text: 'Simple is Smart',
-        image: thinkImage,
-        url: ''
+        text: 'Community',
+        image: miningSectionHeaderImage,
+        url: '#'
       }
     ])
 
@@ -68,9 +68,8 @@ export default defineComponent({
   display: flex;
   align-items: center;
 
-  &.resources-section {
-    z-index: 3;
-    margin-top: -120px;
+  &.landing-section-one {
+    z-index: 1;
   }
 
   .section-background {
@@ -91,7 +90,7 @@ export default defineComponent({
 
   .section-title {
     font-family: 'Futura', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     color: #000000;
     text-align: center;
@@ -103,6 +102,7 @@ export default defineComponent({
     justify-content: center;
     align-items: flex-start;
     gap: 84px;
+    margin-bottom: 5rem;
   }
 
   .resource-item {
@@ -129,7 +129,8 @@ export default defineComponent({
 
   .resource-text {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
+    font-weight: 400;
     line-height: 1.6;
     opacity: 0.67;
     text-align: center;

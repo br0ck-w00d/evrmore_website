@@ -33,7 +33,7 @@ export default defineComponent({
       <v-container class="d-flex flex-column align-center justify-center h-100">
         <div class="text-content text-center">
           <h2>Team</h2>
-          <p>Current and Former Ravencoin Devs, Builders, & Hodlers</p>
+          <p>Current & Former Raven Devs, & Hodlers</p>
         </div>
         <div class="image-content">
           <img :src="teamInfo.image" :alt="teamInfo.alt" class="section-image" />
@@ -86,7 +86,8 @@ export default defineComponent({
 
     p {
       font-family: 'Roboto', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.75rem;
+      font-weight: 400;
       line-height: 1.6;
       opacity: 0.67;
     }

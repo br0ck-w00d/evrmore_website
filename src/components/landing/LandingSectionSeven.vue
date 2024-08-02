@@ -98,7 +98,7 @@ export default defineComponent({
 /* The style section remains unchanged */
 .landing-section {
   position: relative;
-  height: 730px;
+  height: 600px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -130,7 +130,7 @@ export default defineComponent({
 
     h2 {
       font-family: 'Futura', sans-serif;
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: bold;
       opacity: 0.92;
     }
@@ -140,6 +140,7 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
   }
 
   .grid-container {

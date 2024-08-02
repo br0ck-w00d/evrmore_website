@@ -7,6 +7,7 @@ import LandingSectionEight from '@/components/landing/LandingSectionEight.vue'
 import { useToolbarStore } from '../store/toolbar-store.pinia'
 import LandingSectionAdvantage from '@/components/landing/LandingSectionAdvantage.vue'
 import LandingSectionTeam from '@/components/landing/LandingSectionTeam.vue'
+import LandingSectionLearnMore from '@/components/landing/LandingSectionLearnMore.vue'
 
 // Import SVG images for cards
 import layerOneDefiImage from '@/assets/landing_sections/layer_one_defi.svg'
@@ -19,6 +20,7 @@ export default defineComponent({
     LandingSectionAdvantage,
     LandingSectionTeam,
     LandingSectionSix,
+    LandingSectionLearnMore,
     LandingSectionSeven,
     LandingSectionEight
   },
@@ -99,10 +101,11 @@ export default defineComponent({
 
     <!-- Sections -->
     <div class="landing-sections-container">
-      <LandingSectionAdvantage background-image-name="landing_section_f8.svg" />
-      <LandingSectionTeam background-image-name="landing_section_ff.svg" />
-      <LandingSectionSix background-image-name="landing_section_f8.svg" />
-      <LandingSectionSeven background-image-name="landing_section_2f8.svg" />
+      <LandingSectionAdvantage background-image-name="landing_section_1.svg" />
+      <LandingSectionTeam background-image-name="landing_section_f8.svg" />
+      <LandingSectionSix background-image-name="landing_section_ff.svg" />
+      <LandingSectionLearnMore background-image-name="landing_section_94.svg" />
+      <LandingSectionSeven background-image-name="landing_section_294.svg" />
       <LandingSectionEight />
     </div>
   </div>
@@ -156,7 +159,7 @@ export default defineComponent({
   }
 
   .cards-wrapper {
-    margin-bottom: 6vh;
+    margin-bottom: 14vh;
     width: 100%;
   }
 
@@ -172,7 +175,7 @@ export default defineComponent({
   }
 
   .card {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 1rem;
     border-radius: 45px;
     text-align: center;
@@ -197,9 +200,10 @@ export default defineComponent({
 
   .card-title {
     font-family: 'Roboto', sans-serif;
-    font-size: 2.5rem; // 40px in rem
+    font-size: 2rem;
     font-weight: bold;
-    color: #000;
+    color: #000000;
+    opacity: 0.72;
   }
 }
 

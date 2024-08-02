@@ -5,6 +5,7 @@ import developmentImage from '@/assets/roadmap/asset_tolls.svg'
 import launchImage from '@/assets/roadmap/launch.svg'
 import websiteImage from '@/assets/roadmap/website.svg'
 import whitePaperImage from '@/assets/roadmap/white_paper.svg'
+import bearMarketImage from '@/assets/roadmap/bear_market.svg'
 
 export default defineComponent({
   name: 'LandingSectionSix',
@@ -23,6 +24,7 @@ export default defineComponent({
       {
         image: whitePaperImage,
         text: 'White Paper',
+        subtext: '09/2022',
         completed: true,
         active: true,
         link: 'https://github.com/evrmoreorg/whitepaper/blob/master/Evrmore_Whitepaper_2022-09-12.pdf'
@@ -30,13 +32,23 @@ export default defineComponent({
       {
         image: launchImage,
         text: 'Launch',
+        subtext: '11/2022',
         completed: true,
         active: true,
         link: 'https://bitcointalk.org/index.php?topic=5416790.0'
       },
       {
+        image: bearMarketImage,
+        text: 'Bear Market',
+        subtext: '2023',
+        completed: true,
+        active: true,
+        link: '#'
+      },
+      {
         image: websiteImage,
         text: 'Website',
+        subtext: '04/2024',
         completed: true,
         active: true,
         link: 'https://evrmore.com'
@@ -44,6 +56,7 @@ export default defineComponent({
       {
         image: evrlightImage,
         text: 'EvrLight',
+        subtext: 'In Development',
         completed: false,
         active: true,
         link: 'https://hans-schmidt.github.io/mastering_evrmore/evrlight_and_nostr4evr/evrlight_and_nostr4evr.html'
@@ -51,37 +64,50 @@ export default defineComponent({
       {
         image: developmentImage,
         text: 'Asset Tolls',
+        subtext: 'In Development',
         completed: false,
         active: true,
-        link: ''
+        link: '#'
       },
       {
         image: developmentImage,
         text: 'Expiring NFTs',
+        subtext: 'Planned Early 2025',
         completed: false,
         active: false,
-        link: ''
+        link: '#'
       },
       {
         image: developmentImage,
-        text: 'Consumable Assets',
+        text: 'Consumables',
+        subtext: 'Planned Early 2025',
         completed: false,
         active: false,
-        link: ''
+        link: '#'
       },
       {
         image: developmentImage,
         text: 'Covenants',
+        subtext: 'Planned 2025',
         completed: false,
         active: false,
         link: ''
       },
       {
         image: developmentImage,
-        text: 'Vault Assets',
+        text: 'Vaults',
+        subtext: 'Planned 2025',
         completed: false,
         active: false,
-        link: ''
+        link: '#'
+      },
+      {
+        image: developmentImage,
+        text: 'AMM Vaults',
+        subtext: 'TBD',
+        completed: false,
+        active: false,
+        link: '#'
       }
     ])
 
@@ -96,7 +122,7 @@ export default defineComponent({
       }
     }
 
-    const currentPage = ref(0)
+    const currentPage = ref(1)
     const itemsPerPage = 3
 
     const totalPages = computed(() => Math.ceil(roadmapItems.value.length / itemsPerPage))
@@ -135,9 +161,8 @@ export default defineComponent({
               )
             "
           >
-            Roadmap
+            Development
           </h2>
-          <p>Stay up to date with Evrmore's development!</p>
         </div>
         <div class="roadmap-carousel">
           <v-btn icon @click="prevPage" class="carousel-nav left" color="#4d93c7">
@@ -160,22 +185,25 @@ export default defineComponent({
                     <div class="circle-container">
                       <img :src="item.image" :alt="item.text" class="roadmap-image" />
                     </div>
-                    <div class="roadmap-text-container">
-                      <v-icon
-                        :icon="
-                          item.completed
-                            ? 'mdi-check-circle-outline'
-                            : 'mdi-checkbox-blank-circle-outline'
-                        "
-                        :color="
-                          item.completed || item.active
-                            ? 'rgba(0, 0, 0, 0.87)'
-                            : 'rgba(0, 0, 0, 0.37)'
-                        "
-                        size="small"
-                        class="roadmap-checkbox"
-                      ></v-icon>
-                      <p class="roadmap-text">{{ item.text }}</p>
+                    <div class="roadmap-content">
+                      <div class="radio-title-row">
+                        <v-icon
+                          :icon="
+                            item.completed
+                              ? 'mdi-check-circle-outline'
+                              : 'mdi-checkbox-blank-circle-outline'
+                          "
+                          :color="
+                            item.completed || item.active
+                              ? 'rgba(0, 0, 0, 0.87)'
+                              : 'rgba(0, 0, 0, 0.37)'
+                          "
+                          size="small"
+                          class="roadmap-radio"
+                        ></v-icon>
+                        <p class="roadmap-title">{{ item.text }}</p>
+                      </div>
+                      <p class="roadmap-subtitle">{{ item.subtext }}</p>
                     </div>
                   </div>
                 </div>
@@ -233,14 +261,6 @@ export default defineComponent({
       margin-bottom: 0.25rem;
       cursor: pointer;
     }
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      opacity: 0.67;
-    }
   }
 
   .roadmap-carousel {
@@ -249,7 +269,7 @@ export default defineComponent({
     max-width: 960px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     overflow: visible;
   }
 
@@ -267,7 +287,7 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 4rem;
   }
 
@@ -294,6 +314,8 @@ export default defineComponent({
     transition:
       transform 0.2s ease,
       opacity 0.3s ease;
+    width: 100%;
+    max-width: 200px;
 
     &:hover {
       transform: scale(1.05);
@@ -323,21 +345,42 @@ export default defineComponent({
     object-fit: contain;
   }
 
-  .roadmap-text-container {
+  .roadmap-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
-  .roadmap-checkbox {
+  .radio-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.1rem;
+  }
+
+  .roadmap-radio {
     margin-right: 8px;
   }
 
-  .roadmap-text {
+  .roadmap-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+    color: #000000;
+    opacity: 0.67;
+  }
+
+  .roadmap-subtitle {
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     text-align: center;
     margin: 0;
-    color: #000000; // Set a default color
+    color: #000000;
+    opacity: 0.67;
   }
 }
 
@@ -350,7 +393,7 @@ export default defineComponent({
     .content-wrapper {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start; // Changed to align content to the top
       align-items: center;
     }
 
@@ -360,20 +403,25 @@ export default defineComponent({
       h2 {
         font-size: 2rem;
       }
-
-      p {
-        font-size: 1rem;
-      }
     }
 
     .roadmap-grid {
       flex-direction: column;
       gap: 1.5rem;
+      align-items: center; // Center items horizontally in column layout
     }
 
     .circle-container {
       width: 120px;
       height: 120px;
+    }
+
+    .roadmap-title {
+      font-size: 1.25rem;
+    }
+
+    .roadmap-subtitle {
+      font-size: 0.9rem;
     }
   }
 }
@@ -397,8 +445,12 @@ export default defineComponent({
       height: 100px;
     }
 
-    .roadmap-text {
-      font-size: 0.9rem;
+    .roadmap-title {
+      font-size: 1rem;
+    }
+
+    .roadmap-subtitle {
+      font-size: 0.8rem;
     }
   }
 }
