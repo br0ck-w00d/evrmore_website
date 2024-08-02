@@ -1,11 +1,6 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useDisplay } from 'vuetify'
-import LandingSectionOne from '@/components/landing/LandingSectionOne.vue'
-import LandingSectionTwo from '@/components/landing/LandingSectionTwo.vue'
-import LandingSectionThree from '@/components/landing/LandingSectionThree.vue'
-// import LandingSectionFive from '@/components/landing/LandingSectionFive.vue'
-// import LandingSectionFour from '@/components/landing/LandingSectionFour.vue'
 import LandingSectionSix from '@/components/landing/LandingSectionSix.vue'
 import LandingSectionSeven from '@/components/landing/LandingSectionSeven.vue'
 import LandingSectionEight from '@/components/landing/LandingSectionEight.vue'
@@ -21,13 +16,8 @@ import easySwapsImage from '@/assets/landing_sections/easy_swaps.svg'
 export default defineComponent({
   name: 'LandingView',
   components: {
-    // LandingSectionOne,
-    // LandingSectionTwo,
-    // LandingSectionThree,
     LandingSectionAdvantage,
     LandingSectionTeam,
-    // LandingSectionFour,
-    // LandingSectionFive,
     LandingSectionSix,
     LandingSectionSeven,
     LandingSectionEight
@@ -109,9 +99,6 @@ export default defineComponent({
 
     <!-- Sections -->
     <div class="landing-sections-container">
-      <!-- <LandingSectionOne /> -->
-      <!-- <LandingSectionTwo /> -->
-      <!-- <LandingSectionThree /> -->
       <LandingSectionAdvantage background-image-name="landing_section_f8.svg" />
       <LandingSectionTeam background-image-name="landing_section_ff.svg" />
       <LandingSectionSix background-image-name="landing_section_f8.svg" />
@@ -122,14 +109,6 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.landing-container {
-  position: relative;
-}
-
-.landing-sections-container {
-  position: relative;
-}
-
 .header-section {
   position: relative;
   height: 100vh;
