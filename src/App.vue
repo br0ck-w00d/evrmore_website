@@ -56,11 +56,7 @@ const infoDocsItems = [
           >
         </div>
         <v-spacer></v-spacer>
-        <v-btn
-          @click="navigateTo('https://evrmore.com/get_evr')"
-          :color="toolbarStore.toolbarTextColor"
-          >Get EVR</v-btn
-        >
+        <v-btn disabled :color="toolbarStore.toolbarTextColor">Projects</v-btn>
         <v-btn
           @click="navigateTo('https://evrmore.com/mine')"
           :color="toolbarStore.toolbarTextColor"
@@ -71,12 +67,18 @@ const infoDocsItems = [
           :color="toolbarStore.toolbarTextColor"
           >Marketing</v-btn
         >
-        <v-btn disabled :color="toolbarStore.toolbarTextColor">Build</v-btn>
+        <v-btn
+          @click="navigateTo('https://evrmore.com/get_evr')"
+          :color="toolbarStore.toolbarTextColor"
+          >Get EVR</v-btn
+        >
         <v-btn
           @click="navigateTo('https://evrmore.com/initiatives')"
           :color="toolbarStore.toolbarTextColor"
           >Initiatives</v-btn
         >
+        <v-btn disabled :color="toolbarStore.toolbarTextColor">Development</v-btn>
+        <v-btn disabled :color="toolbarStore.toolbarTextColor">Community</v-btn>
         <v-menu
           transition="scale-transition"
           :close-on-content-click="true"

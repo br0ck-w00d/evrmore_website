@@ -9,17 +9,21 @@ import LandingSectionThree from '@/components/landing/LandingSectionThree.vue'
 import LandingSectionSix from '@/components/landing/LandingSectionSix.vue'
 import LandingSectionSeven from '@/components/landing/LandingSectionSeven.vue'
 import LandingSectionEight from '@/components/landing/LandingSectionEight.vue'
-import { useRouter } from 'vue-router'
 import { useToolbarStore } from '../store/toolbar-store.pinia'
 import LandingSectionAdvantage from '@/components/landing/LandingSectionAdvantage.vue'
 import LandingSectionTeam from '@/components/landing/LandingSectionTeam.vue'
 
+// Import SVG images for cards
+import layerOneDefiImage from '@/assets/landing_sections/layer_one_defi.svg'
+import hackerImage from '@/assets/advantage/hacker.svg'
+import easySwapsImage from '@/assets/landing_sections/easy_swaps.svg'
+
 export default defineComponent({
   name: 'LandingView',
   components: {
-    LandingSectionOne,
-    LandingSectionTwo,
-    LandingSectionThree,
+    // LandingSectionOne,
+    // LandingSectionTwo,
+    // LandingSectionThree,
     LandingSectionAdvantage,
     LandingSectionTeam,
     // LandingSectionFour,
@@ -31,42 +35,24 @@ export default defineComponent({
   setup() {
     const { xs } = useDisplay()
     const iconSize = computed(() => (xs.value ? '1.5rem' : '2.5rem'))
-    const router = useRouter()
 
     const toolbarStore = useToolbarStore()
     toolbarStore.setToolbarColor('white')
 
-    const handleClick = (route: string) => {
-      router.push(route)
-    }
-
     return {
       iconSize,
-      handleClick,
       cards: [
         {
-          title: 'Get',
-          description: 'Join the DeFi revolution!',
-          buttonText: 'Get EVR',
-          icon: 'mdi-circle-outline',
-          colorClass: 'green',
-          link: '/get_evr'
+          title: 'Layer One DeFi',
+          image: layerOneDefiImage
         },
         {
-          title: 'Create',
-          description: 'Mint instantly and easily!',
-          buttonText: 'Coming Soon',
-          icon: 'mdi-triangle-outline',
-          colorClass: 'light-blue',
-          link: '/'
+          title: 'No Contract Hacks',
+          image: hackerImage
         },
         {
-          title: 'Mine',
-          description: 'Earn EVR by mining today!',
-          buttonText: 'Mine Now',
-          icon: 'mdi-square-rounded-outline',
-          colorClass: 'blue',
-          link: '/mine'
+          title: 'Easy Swaps',
+          image: easySwapsImage
         }
       ]
     }
@@ -90,7 +76,6 @@ export default defineComponent({
               <v-col cols="12" class="text-center">
                 <div class="header-content">
                   <h1 class="header-title">Evrmore</h1>
-                  <p class="header-subtitle">Decentralized Finance Simplified</p>
                   <img src="@/assets/evrmore_logo.svg" alt="Evrmore Logo" class="header-logo" />
                 </div>
               </v-col>
@@ -110,21 +95,9 @@ export default defineComponent({
                   :key="index"
                   class="card-col"
                 >
-                  <div class="card" @click="handleClick(card.link)">
-                    <div class="card-icon" :class="card.colorClass">
-                      <v-icon :size="iconSize" color="white" class="icon-67-opacity">{{
-                        card.icon
-                      }}</v-icon>
-                    </div>
+                  <div class="card">
+                    <img :src="card.image" :alt="card.title" class="card-image" />
                     <h3 class="card-title">{{ card.title }}</h3>
-                    <p class="card-description">{{ card.description }}</p>
-                    <v-btn
-                      flat
-                      color="#031B34"
-                      class="card-button"
-                      @click="handleClick(card.link)"
-                      >{{ card.buttonText }}</v-btn
-                    >
                   </div>
                 </v-col>
               </v-row>
@@ -136,20 +109,17 @@ export default defineComponent({
 
     <!-- Sections -->
     <div class="landing-sections-container">
-      <LandingSectionOne />
-      <LandingSectionTwo />
-      <LandingSectionThree />
-      <LandingSectionAdvantage background-image-name="landing_section_f8.svg" />
-      <LandingSectionTeam background-image-name="landing_section_ff.svg" />
-      <LandingSectionSix background-image-name="landing_section_f8.svg" />
-      <LandingSectionSeven background-image-name="landing_section_2f8.svg" />
+      <!-- <LandingSectionOne /> -->
+      <!-- <LandingSectionTwo /> -->
+      <!-- <LandingSectionThree /> -->
+      <LandingSectionAdvantage background-image-name="landing_section_1.svg" />
+      <LandingSectionTeam background-image-name="landing_section_f8.svg" />
+      <LandingSectionSix background-image-name="landing_section_ff.svg" />
+      <LandingSectionSeven background-image-name="landing_section_2ff.svg" />
       <LandingSectionEight />
     </div>
   </div>
 </template>
-
-<!-- <LandingSectionFour background-image-name="landing_section_ff.svg" /> -->
-<!-- <LandingSectionFive background-image-name="landing_section_f8.svg" /> -->
 
 <style scoped lang="scss">
 .landing-container {
@@ -198,14 +168,7 @@ export default defineComponent({
     font-size: 6rem;
     font-weight: bold;
     line-height: 4.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .header-subtitle {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .header-logo {
@@ -231,7 +194,7 @@ export default defineComponent({
 
   .card {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 45px;
     text-align: center;
     display: flex;
@@ -239,59 +202,25 @@ export default defineComponent({
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    min-height: 360px;
     transition: all 0.3s ease;
-    cursor: pointer;
 
     &:hover {
       transform: scale(1.02);
     }
   }
 
-  .card-icon {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin: 0 auto 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .green {
-    background-color: #4db6ac;
-  }
-  .light-blue {
-    background-color: #64b5f6;
-  }
-  .blue {
-    background-color: #2196f3;
-  }
-
-  .icon-67-opacity {
-    opacity: 0.67;
+  .card-image {
+    height: 250px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
   }
 
   .card-title {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 500;
-  }
-
-  .card-description {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-  }
-
-  .card-button {
-    font-family: 'Futura', sans-serif;
-    font-size: 0.75rem;
-    height: 40px;
-    align-self: center;
-    padding: 0.5rem 1.5rem;
+    color: #000;
   }
 }
 
@@ -340,18 +269,9 @@ export default defineComponent({
   .header-section {
     .card {
       padding: 1.75rem;
-      min-height: 300px;
     }
     .card-title {
       font-size: 1.6rem;
-    }
-    .card-description {
-      font-size: 0.95rem;
-    }
-    .card-icon {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 1rem;
     }
   }
 }
@@ -360,18 +280,9 @@ export default defineComponent({
   .header-section {
     .card {
       padding: 1.5rem;
-      min-height: 300px;
     }
     .card-title {
       font-size: 1.5rem;
-    }
-    .card-description {
-      font-size: 0.9rem;
-    }
-    .card-icon {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 1rem;
     }
   }
 }
@@ -390,18 +301,9 @@ export default defineComponent({
     }
     .card {
       padding: 1.25rem;
-      min-height: 200px;
     }
     .card-title {
       font-size: 1.5rem;
-    }
-    .card-description {
-      font-size: 0.9rem;
-    }
-    .card-icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 0.5rem;
     }
   }
 }
