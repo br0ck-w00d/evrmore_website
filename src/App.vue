@@ -43,24 +43,32 @@ const drawer = ref(false)
 
 const navItems = [
   {
-    title: 'Get EVR',
-    url: 'https://evrmore.com/get_evr'
+    title: 'Projects',
+    url: ''
   },
   {
     title: 'Mining',
     url: 'https://evrmore.com/mine'
   },
   {
-    title: 'Marketing',
-    url: 'https://evrmore.com/marketing'
+    title: 'Get EVR',
+    url: 'https://evrmore.com/get_evr'
   },
   {
-    title: 'build',
+    title: 'Community',
     url: ''
   },
   {
     title: 'Initiatives',
     url: 'https://evrmore.com/initiatives'
+  },
+  {
+    title: 'Development',
+    url: ''
+  },
+  {
+    title: 'Marketing',
+    url: 'https://evrmore.com/marketing'
   }
 ]
 </script>

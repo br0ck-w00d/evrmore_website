@@ -1,3 +1,31 @@
+<template>
+  <section class="landing-section landing-section-learn-more" :class="{ reverse: reverse }">
+    <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
+    <div class="content-wrapper">
+      <v-container class="d-flex flex-column align-center justify-center h-100">
+        <div class="text-content text-center">
+          <h2>Learn More</h2>
+        </div>
+        <div class="learn-more-grid">
+          <div
+            v-for="(item, index) in displayedItems"
+            :key="index"
+            class="learn-more-item"
+            @click="handleClick(item.link)"
+          >
+            <div class="circle-container">
+              <img :src="item.image" :alt="item.text" class="learn-more-image" />
+            </div>
+            <div class="learn-more-content">
+              <p class="learn-more-title">{{ item.text }}</p>
+            </div>
+          </div>
+        </div>
+      </v-container>
+    </div>
+  </section>
+</template>
+
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -45,28 +73,10 @@ export default defineComponent({
         image: initiativesImage,
         text: 'Initiatives',
         link: '/initiatives'
-      },
-      {
-        image: marketingImage,
-        text: 'Marketing',
-        link: '/marketing'
-      },
-      {
-        image: infoDocsImage,
-        text: 'Info & Docs',
-        link: '#' // TODO: Create View and update link
-      },
-      {
-        image: communityImage,
-        text: 'Community',
-        link: '#' // TODO: Create View and update link
-      },
-      {
-        image: developmentImage,
-        text: 'Development',
-        link: '#' // TODO: Create View and update link
       }
     ])
+
+    const displayedItems = computed(() => learnMoreItems.value.slice(0, 4))
 
     const backgroundImageComputed = computed(() => {
       return new URL(`/src/assets/landing_sections/${props.backgroundImageName}`, import.meta.url)
@@ -79,82 +89,19 @@ export default defineComponent({
       }
     }
 
-    const currentPage = ref(0)
-    const itemsPerPage = 4
-
-    const totalPages = computed(() => Math.ceil(learnMoreItems.value.length / itemsPerPage))
-
-    const nextPage = () => {
-      currentPage.value = (currentPage.value + 1) % totalPages.value
-    }
-
-    const prevPage = () => {
-      currentPage.value = (currentPage.value - 1 + totalPages.value) % totalPages.value
-    }
-
     return {
-      learnMoreItems,
+      displayedItems,
       handleClick,
-      backgroundImageComputed,
-      currentPage,
-      nextPage,
-      prevPage,
-      itemsPerPage,
-      totalPages
+      backgroundImageComputed
     }
   }
 })
 </script>
 
-<template>
-  <section class="landing-section landing-section-learn-more" :class="{ reverse: reverse }">
-    <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
-    <div class="content-wrapper">
-      <v-container class="d-flex flex-column align-center justify-center h-100">
-        <div class="text-content text-center">
-          <h2>Learn More</h2>
-        </div>
-        <div class="learn-more-carousel">
-          <v-btn icon @click="prevPage" class="carousel-nav left" color="#6D7378">
-            <v-icon color="white" size="32">mdi-chevron-left</v-icon>
-          </v-btn>
-          <div class="learn-more-window">
-            <v-window v-model="currentPage" class="learn-more-window-inner">
-              <v-window-item v-for="n in totalPages" :key="n">
-                <div class="learn-more-grid">
-                  <div
-                    v-for="(item, index) in learnMoreItems.slice(
-                      (n - 1) * itemsPerPage,
-                      n * itemsPerPage
-                    )"
-                    :key="index"
-                    class="learn-more-item"
-                    @click="handleClick(item.link)"
-                  >
-                    <div class="circle-container">
-                      <img :src="item.image" :alt="item.text" class="learn-more-image" />
-                    </div>
-                    <div class="learn-more-content">
-                      <p class="learn-more-title">{{ item.text }}</p>
-                    </div>
-                  </div>
-                </div>
-              </v-window-item>
-            </v-window>
-          </div>
-          <v-btn icon @click="nextPage" class="carousel-nav right" color="#6D7378">
-            <v-icon color="white" size="32">mdi-chevron-right</v-icon>
-          </v-btn>
-        </div>
-      </v-container>
-    </div>
-  </section>
-</template>
-
 <style scoped lang="scss">
 .landing-section {
   position: relative;
-  height: 600px;
+  height: 730px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -187,31 +134,11 @@ export default defineComponent({
 
     h2 {
       font-family: 'Futura', sans-serif;
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: bold;
       color: #ffffff;
-      margin-bottom: 0.25rem;
+      margin-bottom: 2rem;
     }
-  }
-
-  .learn-more-carousel {
-    position: relative;
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-start;
-    overflow: visible;
-  }
-
-  .learn-more-window {
-    width: 100%;
-    overflow: hidden;
-    padding: 2rem 0;
-  }
-
-  .learn-more-window-inner {
-    overflow: visible;
   }
 
   .learn-more-grid {
@@ -219,22 +146,10 @@ export default defineComponent({
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    gap: 2.25rem;
-  }
-
-  .carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-
-    &.left {
-      left: -20px;
-    }
-
-    &.right {
-      right: -20px;
-    }
+    gap: 4rem;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
   }
 
   .learn-more-item {
@@ -259,8 +174,8 @@ export default defineComponent({
   }
 
   .circle-container {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     background-color: #b0b5b8;
     display: flex;
@@ -317,7 +232,7 @@ export default defineComponent({
 
     .learn-more-grid {
       flex-wrap: wrap;
-      gap: 1.25rem;
+      gap: 2rem;
     }
 
     .circle-container {

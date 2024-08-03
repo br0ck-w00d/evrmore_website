@@ -98,7 +98,7 @@ export default defineComponent({
 /* The style section remains unchanged */
 .landing-section {
   position: relative;
-  height: 600px;
+  height: 580px;
   width: 100%;
   display: flex;
   align-items: center;

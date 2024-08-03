@@ -154,15 +154,7 @@ export default defineComponent({
     <div class="content-wrapper">
       <v-container class="d-flex flex-column align-center justify-center h-100">
         <div class="text-content text-center">
-          <h2
-            @click="
-              handleClick(
-                'https://hans-schmidt.github.io/mastering_evrmore/roadmap_tech_docs/the_evrmore_defi_roadmap.html'
-              )
-            "
-          >
-            Development
-          </h2>
+          <h2>Development</h2>
         </div>
         <div class="roadmap-carousel">
           <v-btn icon @click="prevPage" class="carousel-nav left" color="#4d93c7">
@@ -259,7 +251,6 @@ export default defineComponent({
       font-weight: bold;
       opacity: 0.87;
       margin-bottom: 0.25rem;
-      cursor: pointer;
     }
   }
 
