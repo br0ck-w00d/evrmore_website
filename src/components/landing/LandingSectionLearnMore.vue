@@ -1,42 +1,10 @@
-<template>
-  <section class="landing-section landing-section-learn-more" :class="{ reverse: reverse }">
-    <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
-    <div class="content-wrapper">
-      <v-container class="d-flex flex-column align-center justify-center h-100">
-        <div class="text-content text-center">
-          <h2>Learn More</h2>
-        </div>
-        <div class="learn-more-grid">
-          <div
-            v-for="(item, index) in displayedItems"
-            :key="index"
-            class="learn-more-item"
-            @click="handleClick(item.link)"
-          >
-            <div class="circle-container">
-              <img :src="item.image" :alt="item.text" class="learn-more-image" />
-            </div>
-            <div class="learn-more-content">
-              <p class="learn-more-title">{{ item.text }}</p>
-            </div>
-          </div>
-        </div>
-      </v-container>
-    </div>
-  </section>
-</template>
-
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import projectsImage from '@/assets/projects/projects.svg'
+import projectsImage from '@/assets/socials/community.svg'
 import miningImage from '@/assets/mining/mining_section_header_image.svg'
 import getEvrImage from '@/assets/getevr_section_header_image.svg'
 import initiativesImage from '@/assets/initiatives_section_header_image.svg'
-import marketingImage from '@/assets/marketing_section_header_image.svg'
-import infoDocsImage from '@/assets/info&docs.svg'
-import communityImage from '@/assets/socials/community.svg'
-import developmentImage from '@/assets/landing_sections/development.svg'
 
 export default defineComponent({
   name: 'LandingSectionLearnMore',
@@ -97,6 +65,34 @@ export default defineComponent({
   }
 })
 </script>
+
+<template>
+  <section class="landing-section landing-section-learn-more" :class="{ reverse: reverse }">
+    <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
+    <div class="content-wrapper">
+      <v-container class="d-flex flex-column align-center justify-center h-100">
+        <div class="text-content text-center">
+          <h2>Learn More</h2>
+        </div>
+        <div class="learn-more-grid">
+          <div
+            v-for="(item, index) in displayedItems"
+            :key="index"
+            class="learn-more-item"
+            @click="handleClick(item.link)"
+          >
+            <div class="circle-container">
+              <img :src="item.image" :alt="item.text" class="learn-more-image" />
+            </div>
+            <div class="learn-more-content">
+              <p class="learn-more-title">{{ item.text }}</p>
+            </div>
+          </div>
+        </div>
+      </v-container>
+    </div>
+  </section>
+</template>
 
 <style scoped lang="scss">
 .landing-section {

@@ -2,7 +2,7 @@
 import { computed, defineComponent, ref } from 'vue'
 import moreSecureImage from '@/assets/advantage/more_secure.svg'
 import easyCreationImage from '@/assets/advantage/versatile.svg'
-import miningSectionHeaderImage from '@/assets/mining/mining_section_header_image.svg'
+import communityImage from '@/assets/socials/community.svg'
 
 export default defineComponent({
   name: 'AdvantageSection',
@@ -26,7 +26,7 @@ export default defineComponent({
       },
       {
         text: 'Community',
-        image: miningSectionHeaderImage,
+        image: communityImage,
         url: '#'
       }
     ])

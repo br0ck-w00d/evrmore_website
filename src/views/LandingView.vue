@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref, onMounted } from 'vue'
 import { useDisplay } from 'vuetify'
 import LandingSectionSix from '@/components/landing/LandingSectionSix.vue'
 import LandingSectionSeven from '@/components/landing/LandingSectionSeven.vue'
@@ -31,8 +31,23 @@ export default defineComponent({
     const toolbarStore = useToolbarStore()
     toolbarStore.setToolbarColor('white')
 
+    const cardAnimations = ref(['', '', ''])
+
+    onMounted(() => {
+      setTimeout(() => {
+        cardAnimations.value[0] = 'animate'
+        setTimeout(() => {
+          cardAnimations.value[1] = 'animate'
+          setTimeout(() => {
+            cardAnimations.value[2] = 'animate'
+          }, 500)
+        }, 500)
+      }, 500)
+    })
+
     return {
       iconSize,
+      cardAnimations,
       cards: [
         {
           title: 'Layer One DeFi',
@@ -87,7 +102,7 @@ export default defineComponent({
                   :key="index"
                   class="card-col"
                 >
-                  <div class="card">
+                  <div :class="['card', cardAnimations[index]]">
                     <img :src="card.image" :alt="card.title" class="card-image" />
                     <h3 class="card-title">{{ card.title }}</h3>
                   </div>
@@ -189,6 +204,10 @@ export default defineComponent({
     &:hover {
       transform: scale(1.02);
     }
+
+    &.animate {
+      animation: growShrink 1s ease;
+    }
   }
 
   .card-image {
@@ -204,6 +223,16 @@ export default defineComponent({
     font-weight: bold;
     color: #000000;
     opacity: 0.72;
+  }
+}
+
+@keyframes growShrink {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
   }
 }
 
