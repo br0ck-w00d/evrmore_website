@@ -37,10 +37,10 @@ export default defineComponent({
     })
 
     const handleClick = (itemText: string) => {
-      console.log('Clicked')
+      console.log('Clicked', itemText)
       switch (itemText) {
-        case 'Satori':
-          window.open('https://satorinet.io/', '_blank')
+        case 'Satori (AI)':
+          window.open('https://satorinet.io', '_blank')
           break
         case 'Little Warriors':
           window.open('https://x.com/litl_warriors', '_blank')
