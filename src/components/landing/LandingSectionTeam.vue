@@ -29,7 +29,7 @@ export default defineComponent({
         ]
       },
       {
-        name: 'Hans Schmidt',
+        name: 'Hans',
         socials: [
           { logo: twitterImage, alt: 'Twitter Logo', link: 'https://x.com/Hans_Schm1dt' },
           { logo: githubImage, alt: 'Github Logo', link: 'https://github.com/hans-schmidt' }
@@ -167,7 +167,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 2rem;
+    margin: 0 5rem;
 
     .circle-stack {
       position: relative;

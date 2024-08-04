@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/initiatives',
       name: 'initiatives',
       component: () => import('@/views/InitiativesView.vue')
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: () => import('@/views/ProjectsView.vue')
     }
   ],
   scrollBehavior() {

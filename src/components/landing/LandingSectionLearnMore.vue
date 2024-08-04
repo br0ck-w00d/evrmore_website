@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import projectsImage from '@/assets/socials/community.svg'
+import projectsImage from '@/assets/projects/projects.svg'
 import miningImage from '@/assets/mining/mining_section_header_image.svg'
 import getEvrImage from '@/assets/getevr_section_header_image.svg'
 import initiativesImage from '@/assets/initiatives_section_header_image.svg'
@@ -25,7 +25,7 @@ export default defineComponent({
       {
         image: projectsImage,
         text: 'Projects',
-        link: '#' // TODO: Create View and update link
+        link: '/projects'
       },
       {
         image: miningImage,

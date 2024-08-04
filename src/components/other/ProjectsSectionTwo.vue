@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
-import satoriImage from '@/assets/projects/satori.png'
-import littleWarriorsImage from '@/assets/projects/little_warriors.png'
-import darkMemeImage from '@/assets/projects/dark_meme.png'
+import cateImage from '@/assets/projects/cate.png'
+import magicImage from '@/assets/wallets/magic.svg'
+import evrlandImage from '@/assets/faucets/evrland.svg'
 
 export default defineComponent({
-  name: 'LandingSectionFive',
+  name: 'ProjectsSectionTwo',
   props: {
     reverse: {
       type: Boolean,
@@ -18,9 +18,9 @@ export default defineComponent({
   },
   setup(props) {
     const gridItems = ref([
-      { text: 'Satori', image: satoriImage },
-      { text: 'Little Warriors', image: littleWarriorsImage },
-      { text: 'Dark Meme', image: darkMemeImage }
+      { text: 'EvrLand', image: evrlandImage },
+      { text: 'Cate', image: cateImage },
+      { text: 'Magic', image: magicImage }
     ])
 
     const topRowItems = computed(() =>
@@ -39,14 +39,14 @@ export default defineComponent({
     const handleClick = (itemText: string) => {
       console.log('Clicked')
       switch (itemText) {
-        case 'Satori':
-          window.open('https://satorinet.io/', '_blank')
+        case 'Evrland':
+          window.open('https://evrland.net/', '_blank')
           break
-        case 'Little Warriors':
-          window.open('https://x.com/litl_warriors', '_blank')
+        case 'Cate':
+          window.open('https://faucet.evrland.net/', '_blank')
           break
-        case 'Dark Meme':
-          window.open('https://darkmemecoin.com/', '_blank')
+        case 'magic':
+          window.open('https://twitter.com/magicwalletapp', '_blank')
           break
         default:
           break
@@ -64,6 +64,10 @@ export default defineComponent({
     <div class="content-wrapper">
       <v-container class="h-100 d-flex align-center justify-center">
         <v-row align="center" justify="center" no-gutters>
+          <v-col cols="auto" class="text-content">
+            <h2>Showcase</h2>
+            <!-- <p>Easily build your project on Evrmore!</p> -->
+          </v-col>
           <v-col cols="auto" class="image-grid">
             <div class="grid-container" :class="{ 'three-items': gridItems.length === 3 }">
               <div class="grid-row">
@@ -93,10 +97,6 @@ export default defineComponent({
                 </div>
               </div>
             </div>
-          </v-col>
-          <v-col cols="auto" class="text-content">
-            <h2>Build Now</h2>
-            <p>Easily build your project on Evrmore!</p>
           </v-col>
         </v-row>
       </v-container>
@@ -135,7 +135,7 @@ export default defineComponent({
 
   .text-content {
     color: #000000;
-    padding-left: 12rem;
+    padding-right: 12rem;
     text-align: center;
 
     h2 {

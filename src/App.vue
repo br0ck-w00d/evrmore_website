@@ -44,7 +44,7 @@ const drawer = ref(false)
 const navItems = [
   {
     title: 'Projects',
-    url: ''
+    url: 'https://evrmore.com/projects'
   },
   {
     title: 'Mining',
