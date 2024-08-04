@@ -1,27 +1,15 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import magicImage from '@/assets/wallets/magic.svg'
-import electrumImage from '@/assets/wallets/electrum.svg'
-import coreImage from '@/assets/evrmore_logo.svg'
+import discordImage from '@/assets/socials/discord.svg'
 
 export default defineComponent({
-  name: 'WalletSection',
+  name: 'DevChatSection',
   setup() {
     const resourceItems = ref([
       {
-        text: 'Magic',
-        image: magicImage,
-        url: 'https://twitter.com/magicwalletapp'
-      },
-      {
-        text: 'Electrum',
-        image: electrumImage,
-        url: 'https://github.com/EvrmoreOrg/electrum-evrmore/releases'
-      },
-      {
-        text: 'Core',
-        image: coreImage,
-        url: 'https://github.com/EvrmoreOrg/Evrmore/releases/tag/v1.0.5'
+        text: '',
+        image: discordImage,
+        url: 'https://discord.gg/evrmore-898915073110720542'
       }
     ])
 
@@ -37,13 +25,13 @@ export default defineComponent({
 <template>
   <section class="landing-section resources-section">
     <img
-      src="@/assets/landing_sections/landing_section_ff.svg"
+      src="@/assets/landing_sections/landing_section_f8.svg"
       alt="Resources Background"
       class="section-background"
     />
     <div class="content-wrapper">
       <v-container class="h-100 d-flex flex-column align-center justify-center">
-        <h2 class="section-title">Wallets</h2>
+        <h2 class="section-title">Dev Chat</h2>
         <div class="resources-grid">
           <div class="resource-item" v-for="(item, index) in resourceItems" :key="index">
             <div class="image-container" @click="handleClick(item.url)">

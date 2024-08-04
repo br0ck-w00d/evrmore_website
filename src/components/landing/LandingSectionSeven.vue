@@ -1,5 +1,6 @@
 <script lang="ts">
 import { ref, computed, defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
 import twitterImage from '@/assets/socials/twitter.svg'
 import discordImage from '@/assets/socials/discord.svg'
 import redditImage from '@/assets/socials/reddit.svg'
@@ -14,6 +15,8 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const router = useRouter()
+
     const gridItems = ref([
       { text: 'TWITTER', image: twitterImage },
       { text: 'DISCORD', image: discordImage },
@@ -45,7 +48,11 @@ export default defineComponent({
       }
     }
 
-    return { gridItems, backgroundImageComputed, handleClick }
+    const navigateToMoreCommunities = () => {
+      router.push('/community')
+    }
+
+    return { gridItems, backgroundImageComputed, handleClick, navigateToMoreCommunities }
   }
 })
 </script>
@@ -58,6 +65,7 @@ export default defineComponent({
         <v-row align="center" justify="center">
           <v-col cols="12" class="text-content">
             <h2>Join the Community</h2>
+            <p class="subtitle" @click="navigateToMoreCommunities">More Channels</p>
           </v-col>
         </v-row>
         <v-row align="center" justify="center">
@@ -125,7 +133,7 @@ export default defineComponent({
 
   .text-content {
     color: #ffffff;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
 
     h2 {
@@ -133,6 +141,20 @@ export default defineComponent({
       font-size: 2rem;
       font-weight: bold;
       opacity: 0.92;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.15rem;
+      color: #4d93c7;
+      opacity: 0.87;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 

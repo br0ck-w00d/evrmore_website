@@ -17,6 +17,10 @@ export default defineComponent({
     backgroundImageName: {
       type: String,
       required: true
+    },
+    sectionTitle: {
+      type: String,
+      required: true
     }
   },
   setup(props) {
@@ -154,7 +158,7 @@ export default defineComponent({
     <div class="content-wrapper">
       <v-container class="d-flex flex-column align-center justify-center h-100">
         <div class="text-content text-center">
-          <h2>Development</h2>
+          <h2>{{ sectionTitle }}</h2>
         </div>
         <div class="roadmap-carousel">
           <v-btn icon @click="prevPage" class="carousel-nav left" color="#4d93c7">

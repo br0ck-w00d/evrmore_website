@@ -118,7 +118,10 @@ export default defineComponent({
     <div class="landing-sections-container">
       <LandingSectionAdvantage background-image-name="landing_section_1.svg" />
       <LandingSectionTeam background-image-name="landing_section_f8.svg" />
-      <LandingSectionSix background-image-name="landing_section_ff.svg" />
+      <LandingSectionSix
+        section-title="Development"
+        background-image-name="landing_section_ff.svg"
+      />
       <LandingSectionLearnMore background-image-name="landing_section_94.svg" />
       <LandingSectionSeven background-image-name="landing_section_294.svg" />
       <LandingSectionEight />

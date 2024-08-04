@@ -19,7 +19,7 @@ export default defineComponent({
   setup(props) {
     const gridItems = ref([
       { text: 'EvrLand', image: evrlandImage },
-      { text: 'Cate', image: cateImage },
+      { text: 'CateCoins', image: cateImage },
       { text: 'Magic', image: magicImage }
     ])
 
@@ -42,10 +42,10 @@ export default defineComponent({
         case 'Evrland':
           window.open('https://evrland.net/', '_blank')
           break
-        case 'Cate':
-          window.open('https://faucet.evrland.net/', '_blank')
+        case 'CateCoins':
+          window.open('https://catecoins.com', '_blank')
           break
-        case 'magic':
+        case 'Magic':
           window.open('https://twitter.com/magicwalletapp', '_blank')
           break
         default:

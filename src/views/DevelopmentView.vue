@@ -3,16 +3,18 @@ import { defineComponent } from 'vue'
 import LandingSectionSeven from '@/components/landing/LandingSectionSeven.vue'
 import LandingSectionEight from '@/components/landing/LandingSectionEight.vue'
 import { useToolbarStore } from '../store/toolbar-store.pinia'
-import ProjectsSectionOne from '@/components/other/ProjectsSectionOne.vue'
-import ProjectsSectionTwo from '@/components/other/ProjectsSectionTwo.vue'
-// import ProjectsSectionThree from '@/components/other/ProjectsSectionThree.vue'
+import LandingSectionSix from '@/components/landing/LandingSectionSix.vue'
+import GrantsSection from '@/components/other/GrantsSection.vue'
+import CodeSection from '@/components/other/CodeSection.vue'
+import DevChatSection from '@/components/other/DevChatSection.vue'
 
 export default defineComponent({
-  name: 'ProjectsView',
+  name: 'DevelopmentView',
   components: {
-    ProjectsSectionOne,
-    ProjectsSectionTwo,
-    // ProjectsSectionThree,
+    GrantsSection,
+    CodeSection,
+    LandingSectionSix,
+    DevChatSection,
     LandingSectionSeven,
     LandingSectionEight
   },
@@ -36,14 +38,14 @@ export default defineComponent({
       <div class="overlay-content">
         <v-container class="content-container d-flex flex-column justify-center align-center h-100">
           <div class="header-content">
-            <h1 class="header-title">Projects</h1>
-            <p class="header-subtitle">Innovating Across the Universe</p>
+            <h1 class="header-title">Development</h1>
+            <p class="header-subtitle">Building the Future</p>
           </div>
           <div class="image-wrapper">
             <img
-              src="@/assets/projects/projects.svg"
-              alt="Marketing Illustration"
-              class="marketing-image"
+              src="@/assets/roadmap/development.svg"
+              alt="Development Illustration"
+              class="development-image"
             />
           </div>
         </v-container>
@@ -52,8 +54,10 @@ export default defineComponent({
 
     <!-- Sections -->
     <div class="landing-sections-container">
-      <ProjectsSectionOne background-image-name="landing_section_ff.svg" />
-      <ProjectsSectionTwo background-image-name="landing_section_f8.svg" />
+      <GrantsSection />
+      <CodeSection />
+      <LandingSectionSix section-title="Roadmap" background-image-name="landing_section_ff.svg" />
+      <DevChatSection />
       <LandingSectionSeven background-image-name="landing_section_2f8.svg" />
       <LandingSectionEight />
     </div>
@@ -120,7 +124,7 @@ export default defineComponent({
     margin: 0 auto;
   }
 
-  .marketing-image {
+  .development-image {
     max-width: 100%;
     height: auto;
   }
