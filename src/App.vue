@@ -56,7 +56,7 @@ const navItems = [
   },
   {
     title: 'Community',
-    url: 'https//evrmore.com/community'
+    url: 'https://evrmore.com/community'
   },
   {
     title: 'Initiatives',
