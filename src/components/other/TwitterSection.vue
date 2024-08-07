@@ -2,6 +2,7 @@
 import { defineComponent, ref, computed } from 'vue'
 import twitterImage from '@/assets/socials/twitter.svg'
 import evrmoreImage from '@/assets/logo_pack/logo_pack.svg'
+import evrmoreOldImage from '@/assets/logo_pack/logo_old.png'
 import evrFoundationImage from '@/assets/socials/evr_foundation.svg'
 import evrDefiImage from '@/assets/socials/evr_defi.jpeg'
 import namelessEvrImage from '@/assets/socials/nameless_evr.jpeg'
@@ -26,14 +27,14 @@ export default defineComponent({
         url: 'https://x.com/evrdefi'
       },
       {
+        text: 'Evr 中文社区',
+        image: evrmoreOldImage,
+        url: 'https://x.com/LBJRL1BHIQ90243'
+      },
+      {
         text: 'Nameless 4 Evrmore',
         image: namelessEvrImage,
         url: 'https://x.com/NamelessEvrmore'
-      },
-      {
-        text: 'Coming Soon',
-        image: twitterImage,
-        url: 'https://evrmore.com/initiatives'
       },
       {
         text: 'Coming Soon',
