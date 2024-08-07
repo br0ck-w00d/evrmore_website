@@ -153,7 +153,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section landing-section-six" :class="{ reverse: reverse }">
+  <!-- <section class="landing-section landing-section-six" :class="{ reverse: reverse }">
     <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
     <div class="content-wrapper">
       <v-container class="d-flex flex-column align-center justify-center h-100">
@@ -212,60 +212,93 @@ export default defineComponent({
         </div>
       </v-container>
     </div>
+  </section> -->
+  <section class="develop-section">
+    <v-container>
+      <h2 class="section-title">Development</h2>
+      <div class="roadmap-carousel">
+        <v-btn icon @click="prevPage" class="carousel-btn" color="#4d93c7">
+          <v-icon color="white" size="32">mdi-chevron-left</v-icon>
+        </v-btn>
+        <div class="roadmap-window">
+          <v-window v-model="currentPage" class="roadmap-window-inner">
+            <v-window-item v-for="n in Math.ceil(roadmapItems.length / itemsPerPage)" :key="n">
+              <div class="roadmap-grid">
+                <div
+                  v-for="(item, index) in roadmapItems.slice(
+                    (n - 1) * itemsPerPage,
+                    n * itemsPerPage
+                  )"
+                  :key="index"
+                  class="roadmap-item"
+                  @click="handleClick(item.link)"
+                  :style="{ opacity: item.completed || item.active ? 1 : 0.37 }"
+                >
+                  <div class="circle-container">
+                    <img :src="item.image" :alt="item.text" class="roadmap-image" />
+                  </div>
+                  <div class="roadmap-content">
+                    <div class="radio-title-row">
+                      <v-icon
+                        :icon="
+                          item.completed
+                            ? 'mdi-check-circle-outline'
+                            : 'mdi-checkbox-blank-circle-outline'
+                        "
+                        :color="
+                          item.completed || item.active
+                            ? 'rgba(0, 0, 0, 0.87)'
+                            : 'rgba(0, 0, 0, 0.37)'
+                        "
+                        size="small"
+                        class="roadmap-radio"
+                      ></v-icon>
+                      <p class="roadmap-title">{{ item.text }}</p>
+                    </div>
+                    <p class="roadmap-subtitle">{{ item.subtext }}</p>
+                  </div>
+                </div>
+              </div>
+            </v-window-item>
+          </v-window>
+        </div>
+        <v-btn icon @click="nextPage" class="carousel-btn" color="#4d93c7">
+          <v-icon color="white" size="32">mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
-  height: 730px;
+.develop-section {
+  height: 580px;
   width: 100%;
   display: flex;
+  justify-self: center;
   align-items: center;
+  padding: 2rem;
 
-  &.landing-section-six {
-    z-index: 3;
-    margin-top: -120px;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
-
-  .text-content {
+  .section-title {
+    font-family: 'Futura', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
     color: #000000;
-    max-width: 600px;
     text-align: center;
-
-    h2 {
-      font-family: 'Futura', sans-serif;
-      font-size: 3rem;
-      font-weight: bold;
-      opacity: 0.87;
-      margin-bottom: 0.25rem;
-    }
   }
 
   .roadmap-carousel {
-    position: relative;
     width: 100%;
     max-width: 960px;
     margin: 0 auto;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     overflow: visible;
+  }
+
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
   }
 
   .roadmap-window {
@@ -280,25 +313,9 @@ export default defineComponent({
 
   .roadmap-grid {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 4rem;
-  }
-
-  .carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-
-    &.left {
-      left: -20px;
-    }
-
-    &.right {
-      right: -20px;
-    }
   }
 
   .roadmap-item {
@@ -335,8 +352,8 @@ export default defineComponent({
   }
 
   .roadmap-image {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 70%;
+    max-height: 70%;
     object-fit: contain;
   }
 
@@ -379,36 +396,36 @@ export default defineComponent({
   }
 }
 
-@media (max-width: 959px) {
-  .landing-section {
-    height: auto;
-    min-height: 730px;
-    padding: 2rem 0;
-
-    .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start; // Changed to align content to the top
-      align-items: center;
-    }
-
-    .text-content {
-      padding: 2rem;
-
-      h2 {
-        font-size: 2rem;
-      }
-    }
-
-    .roadmap-grid {
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: center; // Center items horizontally in column layout
+@media (max-width: 1279px) {
+  .develop-section {
+    .carousel-btn {
+      width: 36px;
+      height: 36px;
     }
 
     .circle-container {
       width: 120px;
       height: 120px;
+    }
+  }
+}
+
+@media (max-width: 959px) {
+  .develop-section {
+    height: auto;
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .roadmap-carousel {
+      height: 750px;
+      gap: 1.5rem;
+    }
+
+    .roadmap-grid {
+      flex-direction: column;
+      gap: 2rem;
     }
 
     .roadmap-title {
@@ -422,16 +439,13 @@ export default defineComponent({
 }
 
 @media (max-width: 599px) {
-  .landing-section {
-    .text-content {
-      padding: 1rem;
-
-      h2 {
-        font-size: 1.75rem;
-      }
+  .develop-section {
+    .section-title {
+      font-size: 1.75rem;
     }
 
-    .roadmap-grid {
+    .roadmap-carousel {
+      height: 600px;
       gap: 1rem;
     }
 

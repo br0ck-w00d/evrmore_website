@@ -10,7 +10,7 @@ export default defineComponent({
   name: 'LandingSectionLearnMore',
   props: {
     reverse: {
-      type: Boolean,
+      // type: Boolean,
       default: false
     },
     backgroundImageName: {
@@ -67,88 +67,66 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section landing-section-learn-more" :class="{ reverse: reverse }">
-    <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
-    <div class="content-wrapper">
-      <v-container class="d-flex flex-column align-center justify-center h-100">
-        <div class="text-content text-center">
-          <h2>Learn More</h2>
-        </div>
-        <div class="learn-more-grid">
-          <div
+  <section class="learnmore-section">
+    <v-container>
+      <h2 class="section-title">Learn More</h2>
+      <v-container variant="text" class="learnmore-content">
+        <v-row class="card-row">
+          <v-col
+            cols="12"
+            xs="6"
+            sm="6"
+            md="3"
+            lg="3"
+            xl="3"
             v-for="(item, index) in displayedItems"
             :key="index"
-            class="learn-more-item"
             @click="handleClick(item.link)"
+            class="card-col"
           >
-            <div class="circle-container">
-              <img :src="item.image" :alt="item.text" class="learn-more-image" />
+            <div class="image-container">
+              <img v-if="item.image" :src="item.image" :alt="item.text" class="card-image" />
             </div>
-            <div class="learn-more-content">
-              <p class="learn-more-title">{{ item.text }}</p>
-            </div>
-          </div>
-        </div>
+            <p class="card-title">{{ item.text }}</p>
+          </v-col>
+        </v-row>
       </v-container>
-    </div>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
+.learnmore-section {
   height: 730px;
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
+  padding: 2rem;
+  padding-top: 4rem;
+  background-image: url('@/assets/landing_sections/landing_section_94.png');
+  background-size: cover;
+  background-position: center;
 
-  &.landing-section-learn-more {
-    z-index: 3;
-    margin-top: -120px;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
-
-  .text-content {
-    color: #000000;
-    max-width: 600px;
+  .section-title {
+    font-family: 'Futura', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
     text-align: center;
-
-    h2 {
-      font-family: 'Futura', sans-serif;
-      font-size: 3rem;
-      font-weight: bold;
-      color: #ffffff;
-      margin-bottom: 2rem;
-    }
+    margin-bottom: 2rem;
   }
 
-  .learn-more-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 4rem;
-    width: 100%;
+  .learnmore-content {
     max-width: 960px;
-    margin: 0 auto;
   }
 
-  .learn-more-item {
+  .card-row {
+    width: 100%;
+    margin: 0;
+  }
+
+  .card-col {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,8 +134,6 @@ export default defineComponent({
     transition:
       transform 0.2s ease,
       opacity 0.3s ease;
-    width: 100%;
-    max-width: 160px;
 
     &:hover {
       transform: scale(1.05);
@@ -169,7 +145,7 @@ export default defineComponent({
     }
   }
 
-  .circle-container {
+  .image-container {
     width: 160px;
     height: 160px;
     border-radius: 50%;
@@ -178,90 +154,72 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    margin-bottom: 1rem;
   }
 
-  .learn-more-image {
-    max-width: 80%;
-    max-height: 80%;
+  .card-image {
+    width: 70%;
+    height: 70%;
     object-fit: contain;
   }
 
-  .learn-more-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .learn-more-title {
+  .card-title {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    text-align: center;
-    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.6;
     color: #ffffff;
     opacity: 0.87;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1279px) {
+  .learnmore-section {
+    height: auto;
+
+    .image-container {
+      width: 120px;
+      height: 120px;
+    }
   }
 }
 
 @media (max-width: 959px) {
-  .landing-section {
-    height: auto;
-    min-height: 730px;
-    padding: 2rem 0;
-
-    .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
+  .learnmore-section {
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .text-content {
-      padding: 2rem;
-
-      h2 {
-        font-size: 2rem;
-      }
+    .learnmore-content {
+      max-width: 600px;
     }
 
-    .learn-more-grid {
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .circle-container {
-      width: 120px;
-      height: 120px;
-    }
-
-    .learn-more-title {
+    .card-title {
       font-size: 1.25rem;
     }
   }
 }
 
 @media (max-width: 599px) {
-  .landing-section {
-    .text-content {
-      padding: 1rem;
+  .learnmore-section {
+    padding-top: 8rem;
 
-      h2 {
-        font-size: 1.75rem;
-      }
+    .section-title {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
     }
 
-    .learn-more-grid {
-      gap: 1rem;
+    .learnmore-content {
+      max-width: 320px;
     }
 
-    .circle-container {
+    .image-container {
       width: 100px;
       height: 100px;
     }
 
-    .learn-more-title {
+    .card-title {
       font-size: 1rem;
     }
   }

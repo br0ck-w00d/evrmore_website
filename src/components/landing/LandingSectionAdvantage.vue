@@ -42,51 +42,39 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section resources-section">
-    <img :src="backgroundImageComputed" alt="Advantage Background" class="section-background" />
-    <div class="content-wrapper">
-      <v-container class="h-100 d-flex flex-column align-center justify-center">
-        <h2 class="section-title">Advantages</h2>
-        <div class="resources-grid">
-          <div class="resource-item" v-for="(item, index) in resourceItems" :key="index">
-            <div class="image-container">
-              <img v-if="item.image" :src="item.image" :alt="item.text" class="resource-image" />
-            </div>
-            <p class="resource-text">{{ item.text }}</p>
-          </div>
-        </div>
+  <section class="advantage-section">
+    <v-container>
+      <h2 class="section-title">Advantages</h2>
+      <v-container variant="text">
+        <v-row class="card-row">
+          <v-col
+            cols="12"
+            xs="12"
+            sm="12"
+            md="4"
+            lg="4"
+            xl="3"
+            v-for="(item, index) in resourceItems"
+            :key="index"
+            class="card-col"
+          >
+            <img v-if="item.image" :src="item.image" :alt="item.text" class="card-image" />
+            <p class="card-title">{{ item.text }}</p>
+          </v-col>
+        </v-row>
       </v-container>
-    </div>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
+.advantage-section {
   height: 730px;
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-
-  &.landing-section-one {
-    z-index: 1;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
+  padding: 2rem;
 
   .section-title {
     font-family: 'Futura', sans-serif;
@@ -97,37 +85,28 @@ export default defineComponent({
     margin-bottom: 2rem;
   }
 
-  .resources-grid {
+  .card-row {
+    width: 100%;
+    margin: 0;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    gap: 84px;
-    margin-bottom: 5rem;
   }
 
-  .resource-item {
+  .card-col {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
-  .image-container {
+  .card-image {
     width: 300px;
     height: 300px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 1rem;
   }
 
-  .resource-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .resource-text {
+  .card-title {
     font-family: 'Roboto', sans-serif;
     font-size: 1.75rem;
     font-weight: 400;
@@ -137,13 +116,11 @@ export default defineComponent({
   }
 }
 
-@media (max-width: 1200px) {
-  .landing-section {
-    .resources-grid {
-      gap: 48px;
-    }
+@media (max-width: 1279px) {
+  .advantage-section {
+    height: auto;
 
-    .image-container {
+    .card-image {
       width: 250px;
       height: 250px;
     }
@@ -151,53 +128,40 @@ export default defineComponent({
 }
 
 @media (max-width: 959px) {
-  .landing-section {
-    height: auto;
-    min-height: 730px;
-    padding: 2rem 0;
-
-    .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
+  .advantage-section {
     .section-title {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
 
-    .resources-grid {
-      flex-direction: column;
-      gap: 2rem;
+    .card-col {
+      margin-bottom: 2rem;
     }
 
-    .image-container {
-      width: 200px;
-      height: 200px;
+    .card-title {
+      font-size: 1.5rem;
     }
   }
 }
 
-@media (max-width: 600px) {
-  .landing-section {
+@media (max-width: 599px) {
+  .advantage-section {
     .section-title {
       font-size: 1.75rem;
       margin-bottom: 1rem;
     }
 
-    .resources-grid {
-      gap: 1.5rem;
+    .card-col {
+      margin-bottom: 1rem;
     }
 
-    .image-container {
-      width: 150px;
-      height: 150px;
+    .card-image {
+      width: 200px;
+      height: 200px;
     }
 
-    .resource-text {
-      font-size: 0.9rem;
+    .card-title {
+      font-size: 1.25rem;
     }
   }
 }

@@ -55,7 +55,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section team-section">
+  <!-- <section class="landing-section team-section">
     <img :src="backgroundImageComputed" alt="Team Background" class="section-background" />
     <div class="content-wrapper">
       <v-container class="d-flex flex-column align-center justify-center h-100">
@@ -98,41 +98,63 @@ export default defineComponent({
         </div>
       </v-container>
     </div>
+  </section> -->
+  <section class="team-section">
+    <v-container>
+      <div class="text-center section-title">
+        <h2>Team</h2>
+        <p>Current & Former Raven Devs, & Hodlers</p>
+      </div>
+      <div class="image-content">
+        <div class="team-member left">
+          <div class="circle-stack">
+            <div
+              v-for="(social, index) in teamMembers[0].socials"
+              :key="index"
+              class="circle-logo"
+              :class="{ 'top-circle': index === 0 }"
+              :style="{ zIndex: teamMembers[0].socials.length - index }"
+              @click="handleClick(social.link)"
+            >
+              <img :src="social.logo" :alt="social.alt" />
+            </div>
+          </div>
+          <p class="member-name">{{ teamMembers[0].name }}</p>
+        </div>
+        <img :src="teamInfo.image" :alt="teamInfo.alt" class="section-image" />
+        <div class="team-member right">
+          <div class="circle-stack">
+            <div
+              v-for="(social, index) in teamMembers[1].socials"
+              :key="index"
+              class="circle-logo"
+              :class="{ 'top-circle': index === 0 }"
+              :style="{ zIndex: teamMembers[1].socials.length - index }"
+              @click="handleClick(social.link)"
+            >
+              <img :src="social.logo" :alt="social.alt" />
+            </div>
+          </div>
+          <p class="member-name">{{ teamMembers[1].name }}</p>
+        </div>
+      </div>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
+.team-section {
   height: 730px;
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
+  padding: 6rem 1rem;
+  background-image: url('@/assets/landing_sections/landing_section_f8.png');
+  background-size: cover;
+  background-position: center;
 
-  &.team-section {
-    z-index: 3;
-    margin-top: -120px;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-  }
-
-  .text-content {
-    color: #000000;
-    max-width: 600px;
+  .section-title {
     margin-bottom: 2rem;
 
     h2 {
@@ -155,12 +177,6 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .section-image {
-    max-width: 100%;
-    height: auto;
-    max-height: 390px;
   }
 
   .team-member {
@@ -225,29 +241,58 @@ export default defineComponent({
       text-align: center;
     }
   }
+
+  .section-image {
+    width: 300px;
+    height: 300px;
+  }
 }
 
-@media (max-width: 960px) {
-  .landing-section {
+@media (max-width: 1279px) {
+  .team-section {
     height: auto;
-    min-height: 730px;
 
     .section-image {
-      max-height: 300px;
+      width: 250px;
+      height: 250px;
     }
+  }
+}
 
-    .text-content {
-      padding-left: 0;
-      padding-bottom: 1rem;
-      text-align: center;
+@media (max-width: 959px) {
+  .team-section {
+    .section-title {
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
     }
 
     .image-content {
       flex-direction: column;
+      gap: 2rem;
     }
 
-    .team-member {
-      margin: 1rem 0;
+    .section-image {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .team-section {
+    .section-title {
+      h2 {
+        font-size: 1.75rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+      }
     }
   }
 }
