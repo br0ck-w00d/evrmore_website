@@ -76,30 +76,28 @@ export default defineComponent({
           <h1 class="header-title">Evrmore</h1>
           <img src="@/assets/evrmore_logo.svg" alt="Evrmore Logo" class="header-logo" />
         </div>
-        <div>
-          <v-container fluid class="container-center">
-            <v-row justify="center" align="center" class="card-row">
-              <v-col
-                cols="12"
-                xs="12"
-                sm="8"
-                md="4"
-                lg="4"
-                xl="3"
-                v-for="(card, index) in cards"
-                :key="index"
-                class="card-col"
+        <v-container fluid class="container-center card-container">
+          <v-row justify="center" align="center" class="card-row">
+            <v-col
+              cols="12"
+              xs="12"
+              sm="8"
+              md="4"
+              lg="4"
+              xl="3"
+              v-for="(card, index) in cards"
+              :key="index"
+              class="card-col"
+            >
+              <v-sheet
+                :class="['card d-flex align-center justify-space-between', cardAnimations[index]]"
               >
-                <v-sheet
-                  :class="['card d-flex align-center justify-space-between', cardAnimations[index]]"
-                >
-                  <img :src="card.image" :alt="card.title" class="card-image" />
-                  <h3 class="card-title">{{ card.title }}</h3>
-                </v-sheet>
-              </v-col>
-            </v-row>
-          </v-container>
-        </div>
+                <img :src="card.image" :alt="card.title" class="card-image" />
+                <h3 class="card-title">{{ card.title }}</h3>
+              </v-sheet>
+            </v-col>
+          </v-row>
+        </v-container>
       </v-container>
     </section>
 
@@ -199,6 +197,11 @@ export default defineComponent({
   .container-center {
     display: flex;
     justify-content: center;
+  }
+
+  .card-container {
+    max-width: 2400px;
+    width: 100%;
   }
 }
 
