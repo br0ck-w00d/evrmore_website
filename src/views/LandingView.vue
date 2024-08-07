@@ -71,7 +71,7 @@ export default defineComponent({
   <div class="landing-container">
     <!-- Header Section -->
     <section class="header-section">
-      <v-container fluid>
+      <v-container fluid class="header-wrapper">
         <div class="header-content-wrapper">
           <h1 class="header-title">Evrmore</h1>
           <img src="@/assets/evrmore_logo.svg" alt="Evrmore Logo" class="header-logo" />
@@ -126,6 +126,13 @@ export default defineComponent({
   padding: 1rem;
   height: 100vh;
 
+  .header-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85%;
+  }
+
   .header-content-wrapper {
     padding-top: 10vh;
     text-align: center;
@@ -147,7 +154,6 @@ export default defineComponent({
 
   .card-row {
     width: 100%;
-    margin: 0;
   }
 
   .card-col {
