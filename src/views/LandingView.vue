@@ -77,7 +77,7 @@ export default defineComponent({
           <img src="@/assets/evrmore_logo.svg" alt="Evrmore Logo" class="header-logo" />
         </div>
         <div>
-          <v-container fluid>
+          <v-container fluid class="container-center">
             <v-row justify="center" align="center" class="card-row">
               <v-col
                 cols="12"
@@ -194,6 +194,11 @@ export default defineComponent({
     font-weight: bold;
     color: #000000;
     opacity: 0.72;
+  }
+
+  .container-center {
+    display: flex;
+    justify-content: center;
   }
 }
 
