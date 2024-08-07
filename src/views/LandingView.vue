@@ -71,59 +71,48 @@ export default defineComponent({
   <div class="landing-container">
     <!-- Header Section -->
     <section class="header-section">
-      <img
-        src="@/assets/landing_sections/header_background.svg"
-        alt="Header Background"
-        class="header-image"
-      />
-      <div class="overlay-content">
-        <v-container class="content-container d-flex flex-column justify-space-between h-100">
-          <div class="header-content-wrapper">
-            <v-row justify="center" align="start" class="header-row">
-              <v-col cols="12" class="text-center">
-                <div class="header-content">
-                  <h1 class="header-title">Evrmore</h1>
-                  <img src="@/assets/evrmore_logo.svg" alt="Evrmore Logo" class="header-logo" />
-                </div>
+      <v-container fluid class="header-wrapper">
+        <div class="header-content-wrapper">
+          <h1 class="header-title">Evrmore</h1>
+          <img src="@/assets/evrmore_logo.svg" alt="Evrmore Logo" class="header-logo" />
+        </div>
+        <div>
+          <v-container fluid>
+            <v-row justify="center" align="center" class="card-row">
+              <v-col
+                cols="12"
+                xs="12"
+                sm="8"
+                md="4"
+                lg="4"
+                xl="3"
+                v-for="(card, index) in cards"
+                :key="index"
+                class="card-col"
+              >
+                <v-sheet
+                  :class="['card d-flex align-center justify-space-between', cardAnimations[index]]"
+                >
+                  <img :src="card.image" :alt="card.title" class="card-image" />
+                  <h3 class="card-title">{{ card.title }}</h3>
+                </v-sheet>
               </v-col>
             </v-row>
-          </div>
-          <div class="cards-wrapper">
-            <v-container fluid>
-              <v-row justify="center" align="center" class="card-row">
-                <v-col
-                  cols="12"
-                  xs="12"
-                  sm="6"
-                  md="4"
-                  lg="4"
-                  xl="3"
-                  v-for="(card, index) in cards"
-                  :key="index"
-                  class="card-col"
-                >
-                  <div :class="['card', cardAnimations[index]]">
-                    <img :src="card.image" :alt="card.title" class="card-image" />
-                    <h3 class="card-title">{{ card.title }}</h3>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-container>
-          </div>
-        </v-container>
-      </div>
+          </v-container>
+        </div>
+      </v-container>
     </section>
 
     <!-- Sections -->
     <div class="landing-sections-container">
-      <LandingSectionAdvantage background-image-name="landing_section_1.svg" />
-      <LandingSectionTeam background-image-name="landing_section_f8.svg" />
+      <LandingSectionAdvantage background-image-name="landing_section_1.png" />
+      <LandingSectionTeam background-image-name="landing_section_f8.png" />
       <LandingSectionSix
         section-title="Development"
         background-image-name="landing_section_ff.svg"
       />
-      <LandingSectionLearnMore background-image-name="landing_section_94.svg" />
-      <LandingSectionSeven background-image-name="landing_section_294.svg" />
+      <LandingSectionLearnMore background-image-name="landing_section_94.png" />
+      <LandingSectionSeven background-image-name="landing_section_294.png" />
       <LandingSectionEight />
     </div>
   </div>
@@ -131,34 +120,21 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .header-section {
-  position: relative;
+  background-image: url('@/assets/landing_sections/header_background.png');
+  background-size: cover;
+  background-position: center;
+  padding: 1rem;
   height: 100vh;
-  overflow: hidden;
 
-  .header-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .overlay-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .content-container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  .header-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85%;
   }
 
   .header-content-wrapper {
     padding-top: 10vh;
-  }
-
-  .header-content {
     text-align: center;
     color: white;
   }
@@ -176,14 +152,8 @@ export default defineComponent({
     height: 160px;
   }
 
-  .cards-wrapper {
-    margin-bottom: 14vh;
-    width: 100%;
-  }
-
   .card-row {
     width: 100%;
-    margin: 0;
   }
 
   .card-col {
@@ -197,9 +167,7 @@ export default defineComponent({
     padding: 1rem;
     border-radius: 45px;
     text-align: center;
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
     height: 100%;
     transition: all 0.3s ease;
@@ -214,8 +182,8 @@ export default defineComponent({
   }
 
   .card-image {
-    height: 250px;
-    width: auto;
+    height: 300px;
+    width: 300px;
     object-fit: contain;
     margin-bottom: 1rem;
   }
@@ -282,9 +250,18 @@ export default defineComponent({
 
 @media (max-width: 1279px) {
   .header-section {
+    height: auto;
+
     .card {
+      height: 410px;
       padding: 1.75rem;
     }
+
+    .card-image {
+      width: 250px;
+      height: 250px;
+    }
+
     .card-title {
       font-size: 2.25rem; // Slightly reduced for better fit
     }
@@ -304,19 +281,32 @@ export default defineComponent({
 
 @media (max-width: 599px) {
   .header-section {
-    height: 150vh;
+    padding: 0;
 
     .header-title {
       font-size: 4rem;
       line-height: 3.2rem;
     }
+
     .header-logo {
       width: 100px;
       height: 100px;
     }
+
     .card {
-      padding: 1.25rem;
+      height: auto;
+      padding: 2rem;
     }
+
+    .card-col {
+      padding: 1rem 0;
+    }
+
+    .card-image {
+      width: 200px;
+      height: 200px;
+    }
+
     .card-title {
       font-size: 1.75rem; // Adjusted for mobile screens
     }

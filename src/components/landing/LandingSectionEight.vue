@@ -84,6 +84,7 @@ export default defineComponent({
   width: 100%;
   display: flex;
   align-items: center;
+  padding-top: 4rem;
 
   &.landing-section-eight {
     z-index: 3;
