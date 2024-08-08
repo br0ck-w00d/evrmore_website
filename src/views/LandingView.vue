@@ -128,7 +128,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 85%;
+    height: 95%;
   }
 
   .header-content-wrapper {
