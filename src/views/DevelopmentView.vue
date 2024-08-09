@@ -30,11 +30,6 @@ export default defineComponent({
   <div class="landing-container">
     <!-- Header Section -->
     <section class="header-section">
-      <img
-        src="@/assets/landing_sections/view_header.svg"
-        alt="Header Background"
-        class="header-image"
-      />
       <div class="overlay-content">
         <v-container class="content-container d-flex flex-column justify-center align-center h-100">
           <div class="header-content">
@@ -44,8 +39,8 @@ export default defineComponent({
           <div class="image-wrapper">
             <img
               src="@/assets/roadmap/development.svg"
-              alt="Development Illustration"
-              class="development-image"
+              alt="Marketing Illustration"
+              class="marketing-image"
             />
           </div>
         </v-container>
@@ -65,29 +60,14 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.landing-container {
-  position: relative;
-}
-
-.landing-sections-container {
-  position: relative;
-}
-
 .header-section {
-  position: relative;
+  background-image: url('@/assets/landing_sections/view_header.png');
+  background-size: cover;
+  background-position: center;
   height: 850px;
   overflow: hidden;
 
-  .header-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .overlay-content {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -124,7 +104,7 @@ export default defineComponent({
     margin: 0 auto;
   }
 
-  .development-image {
+  .marketing-image {
     max-width: 100%;
     height: auto;
   }
