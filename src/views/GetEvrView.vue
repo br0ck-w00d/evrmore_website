@@ -62,7 +62,7 @@ export default defineComponent({
       />
       <ExchangeSection background-image-name="landing_section_ff.svg" />
       <FaucetsSection background-image-name="landing_section_f8.svg" />
-      <LandingSectionSeven background-image-name="landing_section_2f8.svg" />
+      <LandingSectionSeven background-image-name="landing_section_2f8.png" />
       <LandingSectionEight />
     </div>
   </div>

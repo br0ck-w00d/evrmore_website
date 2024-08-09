@@ -44,17 +44,22 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section coin-stats-section">
-    <img
-      src="@/assets/landing_sections/landing_section_ff.svg"
-      alt="Guidelines Background"
-      class="section-background"
-    />
-    <div class="content-wrapper">
-      <v-container class="h-100 d-flex flex-column align-center justify-center">
-        <h2 class="section-title">Guidelines</h2>
-        <div class="stats-grid">
-          <div class="stat-item" v-for="(item, index) in statItems" :key="index">
+  <section class="guidelines-section">
+    <v-container class="h-100 d-flex flex-column align-center justify-center" fluid>
+      <h2 class="section-title">Guidelines</h2>
+      <v-container fluid>
+        <v-row class="card-row">
+          <v-col
+            cols="12"
+            xs="12"
+            sm="12"
+            md="3"
+            lg="3"
+            xl="3"
+            v-for="(item, index) in statItems"
+            :key="index"
+            class="card-col"
+          >
             <h3 class="stat-heading">{{ item.heading }}</h3>
             <div v-if="item.colors" class="color-circles">
               <div
@@ -74,41 +79,19 @@ export default defineComponent({
                 {{ line }}
               </p>
             </template>
-          </div>
-        </div>
+          </v-col>
+        </v-row>
       </v-container>
-    </div>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
-  height: 730px;
+.guidelines-section {
+  height: 450px;
   width: 100%;
   display: flex;
   align-items: center;
-
-  &.coin-stats-section {
-    z-index: 3;
-    margin-top: -120px;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
 
   .section-title {
     font-family: 'Futura', sans-serif;
@@ -116,23 +99,22 @@ export default defineComponent({
     font-weight: bold;
     color: #000000;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
-  .stats-grid {
+  .card-row {
+    max-width: 750px;
     display: flex;
-    flex-direction: row;
+    align-items: start;
     justify-content: center;
-    align-items: flex-start;
-    gap: 4rem;
-    flex-wrap: wrap;
+    margin: 0 auto;
   }
 
-  .stat-item {
+  .card-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
   }
 
   .stat-heading {
@@ -208,7 +190,6 @@ export default defineComponent({
 
     .section-title {
       font-size: 2rem;
-      margin-bottom: 1.5rem;
     }
 
     .stats-grid {
@@ -228,7 +209,7 @@ export default defineComponent({
   .landing-section {
     .section-title {
       font-size: 1.75rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .stats-grid {

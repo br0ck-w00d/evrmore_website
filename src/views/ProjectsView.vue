@@ -28,11 +28,6 @@ export default defineComponent({
   <div class="landing-container">
     <!-- Header Section -->
     <section class="header-section">
-      <img
-        src="@/assets/landing_sections/view_header.svg"
-        alt="Header Background"
-        class="header-image"
-      />
       <div class="overlay-content">
         <v-container class="content-container d-flex flex-column justify-center align-center h-100">
           <div class="header-content">
@@ -54,36 +49,21 @@ export default defineComponent({
     <div class="landing-sections-container">
       <ProjectsSectionOne background-image-name="landing_section_ff.svg" />
       <ProjectsSectionTwo background-image-name="landing_section_f8.svg" />
-      <LandingSectionSeven background-image-name="landing_section_2f8.svg" />
+      <LandingSectionSeven background-image-name="landing_section_2f8.png" />
       <LandingSectionEight />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.landing-container {
-  position: relative;
-}
-
-.landing-sections-container {
-  position: relative;
-}
-
 .header-section {
-  position: relative;
+  background-image: url('@/assets/landing_sections/view_header.png');
+  background-size: cover;
+  background-position: center;
   height: 850px;
   overflow: hidden;
 
-  .header-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .overlay-content {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     display: flex;

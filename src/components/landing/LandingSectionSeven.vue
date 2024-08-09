@@ -113,6 +113,7 @@ export default defineComponent({
 
   &.landing-section-seven {
     z-index: 3;
+    margin-top: -80px;
   }
 
   .section-background {

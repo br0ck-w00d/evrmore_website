@@ -66,109 +66,64 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section resources-section">
-    <img
-      src="@/assets/landing_sections/landing_section_f8.svg"
-      alt="Resources Background"
-      class="section-background"
-    />
-    <div class="content-wrapper">
-      <v-container class="h-100 d-flex flex-column align-center justify-center">
-        <div class="text-content text-center">
-          <h2>Twitter</h2>
-          <!-- <p>The Evrmore Foundation</p> -->
-        </div>
-        <div class="resources-carousel">
-          <v-btn icon @click="prevPage" class="carousel-nav left" color="#C2C2C2">
-            <v-icon color="white" size="36">mdi-chevron-left</v-icon>
-          </v-btn>
-          <div class="resources-window">
-            <v-window v-model="currentPage" class="resources-window-inner">
-              <v-window-item v-for="n in Math.ceil(resourceItems.length / itemsPerPage)" :key="n">
-                <div class="resources-grid">
-                  <div
-                    v-for="(item, index) in resourceItems.slice(
-                      (n - 1) * itemsPerPage,
-                      n * itemsPerPage
-                    )"
-                    :key="index"
-                    class="resource-item"
-                    @click="handleClick(item.url)"
-                  >
-                    <div class="image-container">
-                      <img
-                        v-if="item.image"
-                        :src="item.image"
-                        :alt="item.text"
-                        class="resource-image"
-                      />
-                    </div>
-                    <p class="resource-text">{{ item.text }}</p>
+  <section class="twitter-section">
+    <v-container>
+      <h2 class="section-title">Twitter</h2>
+      <div class="resource-carousel">
+        <v-btn icon @click="prevPage" class="carousel-btn" color="#c2c2c2">
+          <v-icon color="white" size="32">mdi-chevron-left</v-icon>
+        </v-btn>
+        <div class="resource-window">
+          <v-window v-model="currentPage" class="resource-window-inner">
+            <v-window-item v-for="n in Math.ceil(resourceItems.length / itemsPerPage)" :key="n">
+              <div class="resource-grid">
+                <div
+                  v-for="(item, index) in resourceItems.slice(
+                    (n - 1) * itemsPerPage,
+                    n * itemsPerPage
+                  )"
+                  :key="index"
+                  class="resource-item"
+                  @click="handleClick(item.url)"
+                >
+                  <div class="image-container">
+                    <img :src="item.image" :alt="item.text" class="resource-image" />
                   </div>
+                  <p class="resource-text">{{ item.text }}</p>
                 </div>
-              </v-window-item>
-            </v-window>
-          </div>
-          <v-btn icon @click="nextPage" class="carousel-nav right" color="#C2C2C2">
-            <v-icon color="white" size="36">mdi-chevron-right</v-icon>
-          </v-btn>
+              </div>
+            </v-window-item>
+          </v-window>
         </div>
-      </v-container>
-    </div>
+        <v-btn icon @click="nextPage" class="carousel-btn" color="#c2c2c2">
+          <v-icon color="white" size="32">mdi-chevron-right</v-icon>
+        </v-btn>
+      </div>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
-  height: 730px;
+.twitter-section {
+  height: 650px;
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
+  background-image: url('@/assets/landing_sections/landing_section_f8.png');
+  background-size: cover;
+  background-position: center;
 
-  &.resources-section {
-    z-index: 3;
-    margin-top: -120px;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
-
-  .text-content {
+  .section-title {
+    font-family: 'Futura', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
     color: #000000;
-    max-width: 600px;
-    // margin-bottom: 2rem;
-
-    h2 {
-      font-family: 'Futura', sans-serif;
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
-    }
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.25rem;
-      line-height: 1.6;
-      opacity: 0.67;
-    }
+    text-align: center;
+    margin-bottom: 0.25rem;
   }
 
-  .resources-carousel {
-    position: relative;
+  .resource-carousel {
     width: 100%;
     max-width: 960px;
     margin: 0 auto;
@@ -177,37 +132,26 @@ export default defineComponent({
     overflow: visible;
   }
 
-  .resources-window {
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .resource-window {
     width: 100%;
     overflow: hidden;
     padding: 2rem 0;
   }
 
-  .resources-window-inner {
+  .resource-window-inner {
     overflow: visible;
   }
 
-  .resources-grid {
+  .resource-grid {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 4rem;
-  }
-
-  .carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-
-    &.left {
-      left: -20px;
-    }
-
-    &.right {
-      right: -20px;
-    }
   }
 
   .resource-item {
@@ -215,7 +159,11 @@ export default defineComponent({
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      opacity 0.3s ease;
+    width: 100%;
+    max-width: 200px;
 
     &:hover {
       transform: scale(1.05);
@@ -255,29 +203,16 @@ export default defineComponent({
 }
 
 @media (max-width: 959px) {
-  .landing-section {
+  .twitter-section {
     height: auto;
-    min-height: 730px;
-    padding: 2rem 0;
+    min-height: 650px;
+    padding: 4rem 0;
 
-    .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .section-title {
+      font-size: 2rem;
     }
 
-    .text-content {
-      h2 {
-        font-size: 2.5rem;
-      }
-
-      p {
-        font-size: 1.1rem;
-      }
-    }
-
-    .resources-grid {
+    .resource-grid {
       flex-direction: column;
       gap: 1.5rem;
     }
@@ -285,21 +220,14 @@ export default defineComponent({
     .image-container {
       width: 120px;
       height: 120px;
-      border-radius: 60px;
     }
   }
 }
 
-@media (max-width: 600px) {
-  .landing-section {
-    .text-content {
-      h2 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
+@media (max-width: 599px) {
+  .twitter-section {
+    .section-title {
+      font-size: 1.75rem;
     }
 
     .resources-grid {
