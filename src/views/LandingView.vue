@@ -5,19 +5,19 @@ import LandingSectionSix from '@/components/landing/LandingSectionSix.vue'
 import LandingSectionSeven from '@/components/landing/LandingSectionSeven.vue'
 import LandingSectionEight from '@/components/landing/LandingSectionEight.vue'
 import { useToolbarStore } from '../store/toolbar-store.pinia'
-import LandingSectionAdvantage from '@/components/landing/LandingSectionAdvantage.vue'
+import LandingSectionChooseEvr from '@/components/landing/LandingSectionChooseEvr.vue'
 import LandingSectionTeam from '@/components/landing/LandingSectionTeam.vue'
 import LandingSectionLearnMore from '@/components/landing/LandingSectionLearnMore.vue'
 
 // Import SVG images for cards
 import layerOneDefiImage from '@/assets/landing_sections/layer_one_defi.svg'
-import hackerImage from '@/assets/advantage/hacker.svg'
+import hackerImage from '@/assets/choose_evr/hacker.svg'
 import easySwapsImage from '@/assets/landing_sections/easy_swaps.svg'
 
 export default defineComponent({
   name: 'LandingView',
   components: {
-    LandingSectionAdvantage,
+    LandingSectionChooseEvr,
     LandingSectionTeam,
     LandingSectionSix,
     LandingSectionLearnMore,
@@ -103,7 +103,7 @@ export default defineComponent({
 
     <!-- Sections -->
     <div class="landing-sections-container">
-      <LandingSectionAdvantage background-image-name="landing_section_1.png" />
+      <LandingSectionChooseEvr background-image-name="landing_section_1.png" />
       <LandingSectionTeam background-image-name="landing_section_f8.png" />
       <LandingSectionSix
         section-title="Development"
