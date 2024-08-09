@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import WalletSection from '@/components/other/WalletsSection.vue'
-import ExchangeSection from '@/components/other/ExchangesSection.vue'
+import ExchangeSection from '@/components/other/ExchangesSection_1.vue'
 import FaucetsSection from '@/components/other/FaucetsSection.vue'
 import LandingSectionSeven from '@/components/landing/LandingSectionSeven.vue'
 import LandingSectionEight from '@/components/landing/LandingSectionEight.vue'

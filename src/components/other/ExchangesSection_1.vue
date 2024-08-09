@@ -1,10 +1,11 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import manticoreImage from '@/assets/faucets/manticore.svg'
-import evrlandImage from '@/assets/faucets/evrland.svg'
+import xeggexImage from '@/assets/exchanges/xeggex.svg'
+import coinWImage from '@/assets/exchanges/coinw.svg'
+import safeTradeImage from '@/assets/exchanges/safetrade.svg'
 
 export default defineComponent({
-  name: 'FaucetsSection',
+  name: 'ExchangesSection',
   props: {
     backgroundImageName: {
       type: String,
@@ -14,14 +15,19 @@ export default defineComponent({
   setup(props) {
     const resourceItems = ref([
       {
-        text: 'EvrLand',
-        image: evrlandImage,
-        url: 'https://faucet.evrland.net/'
+        text: 'Xeggex',
+        image: xeggexImage,
+        url: 'https://xeggex.com/market/EVR_USDT'
       },
       {
-        text: 'Manticore',
-        image: manticoreImage,
-        url: 'https://manticore.exchange/faucet'
+        text: 'CoinW: Get Involved',
+        image: coinWImage,
+        url: 'https://discord.com/channels/898915073110720542/1253304077845266483/1253367435676094545'
+      },
+      {
+        text: 'SafeTrade',
+        image: safeTradeImage,
+        url: 'https://safetrade.com/exchange/EVR-USDT?type=basic'
       }
     ])
 
@@ -40,41 +46,39 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="faucets-section">
+  <section class="exchanges-section">
     <v-container>
-      <h2 class="section-title">Faucets</h2>
-      <v-row class="card-row">
-        <v-col
-          cols="12"
-          xs="12"
-          sm="12"
-          md="3"
-          lg="2"
-          xl="2"
-          v-for="(item, index) in resourceItems"
-          :key="index"
-          class="card-col"
-        >
-          <a :href="item.url">
-            <img v-if="item.image" :src="item.image" :alt="item.text" class="resource-image" />
-          </a>
-          <p class="resource-text">{{ item.text }}</p>
-        </v-col>
-      </v-row>
+      <h2 class="section-title">Exchanges</h2>
+      <v-container>
+        <v-row class="card-row">
+          <v-col
+            cols="12"
+            xs="12"
+            sm="12"
+            md="3"
+            lg="2"
+            xl="2"
+            v-for="(item, index) in resourceItems"
+            :key="index"
+            @click="handleClick(item.url)"
+            class="card-col"
+          >
+            <img v-if="item.image" :src="item.image" :alt="item.text" class="exchanges-image" />
+            <p class="exchanges-text">{{ item.text }}</p>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.faucets-section {
-  height: 650px;
+.exchanges-section {
+  height: 450px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('@/assets/landing_sections/landing_section_f8.png');
-  background-size: cover;
-  background-position: center;
 
   .section-title {
     font-family: 'Futura', sans-serif;
@@ -82,7 +86,10 @@ export default defineComponent({
     font-weight: bold;
     color: #000000;
     text-align: center;
-    margin-bottom: 2rem;
+
+    &.with-subtitle {
+      margin-bottom: 0.2rem;
+    }
   }
 
   .card-row {
@@ -110,13 +117,13 @@ export default defineComponent({
     }
   }
 
-  .resource-image {
+  .exchanges-image {
     width: 160px;
     height: 160px;
     margin-bottom: 10px;
   }
 
-  .resource-text {
+  .exchanges-text {
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     font-weight: 500;
@@ -127,17 +134,20 @@ export default defineComponent({
 }
 
 @media (max-width: 959px) {
-  .faucets-section {
+  .exchanges-section {
     height: auto;
-    height: 650px;
+    min-height: 450px;
     padding: 4rem 0;
 
     .section-title {
       font-size: 2rem;
-      margin-bottom: 1.5rem;
+
+      &.with-subtitle {
+        margin-bottom: 0.75rem;
+      }
     }
 
-    .resource-image {
+    .exchanges-image {
       width: 120px;
       height: 120px;
       margin-bottom: 10px;
@@ -146,18 +156,21 @@ export default defineComponent({
 }
 
 @media (max-width: 599px) {
-  .faucets-section {
+  .exchanges-section {
     .section-title {
       font-size: 1.75rem;
-      margin-bottom: 1rem;
+
+      &.with-subtitle {
+        margin-bottom: 0.5rem;
+      }
     }
 
-    .resource-image {
+    .exchanges-image {
       width: 100px;
       height: 100px;
     }
 
-    .resource-text {
+    .exchanges-text {
       font-size: 0.9rem;
     }
   }
