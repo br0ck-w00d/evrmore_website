@@ -40,13 +40,13 @@ export default defineComponent({
       console.log('Clicked', itemText)
       switch (itemText) {
         case 'Satori (AI)':
-          window.open('https://satorinet.io', '_blank')
+          window.open('https://www.satorinet.io', '_blank')
           break
         case 'Little Warriors':
           window.open('https://x.com/litl_warriors', '_blank')
           break
         case 'Dark Meme':
-          window.open('https://darkmemecoin.com/', '_blank')
+          window.open('https://www.darkmemecoin.com/', '_blank')
           break
         default:
           break
