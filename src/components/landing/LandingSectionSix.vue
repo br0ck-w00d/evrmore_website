@@ -153,66 +153,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <!-- <section class="landing-section landing-section-six" :class="{ reverse: reverse }">
-    <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
-    <div class="content-wrapper">
-      <v-container class="d-flex flex-column align-center justify-center h-100">
-        <div class="text-content text-center">
-          <h2>{{ sectionTitle }}</h2>
-        </div>
-        <div class="roadmap-carousel">
-          <v-btn icon @click="prevPage" class="carousel-nav left" color="#4d93c7">
-            <v-icon color="white" size="36">mdi-chevron-left</v-icon>
-          </v-btn>
-          <div class="roadmap-window">
-            <v-window v-model="currentPage" class="roadmap-window-inner">
-              <v-window-item v-for="n in Math.ceil(roadmapItems.length / itemsPerPage)" :key="n">
-                <div class="roadmap-grid">
-                  <div
-                    v-for="(item, index) in roadmapItems.slice(
-                      (n - 1) * itemsPerPage,
-                      n * itemsPerPage
-                    )"
-                    :key="index"
-                    class="roadmap-item"
-                    @click="handleClick(item.link)"
-                    :style="{ opacity: item.completed || item.active ? 1 : 0.37 }"
-                  >
-                    <div class="circle-container">
-                      <img :src="item.image" :alt="item.text" class="roadmap-image" />
-                    </div>
-                    <div class="roadmap-content">
-                      <div class="radio-title-row">
-                        <v-icon
-                          :icon="
-                            item.completed
-                              ? 'mdi-check-circle-outline'
-                              : 'mdi-checkbox-blank-circle-outline'
-                          "
-                          :color="
-                            item.completed || item.active
-                              ? 'rgba(0, 0, 0, 0.87)'
-                              : 'rgba(0, 0, 0, 0.37)'
-                          "
-                          size="small"
-                          class="roadmap-radio"
-                        ></v-icon>
-                        <p class="roadmap-title">{{ item.text }}</p>
-                      </div>
-                      <p class="roadmap-subtitle">{{ item.subtext }}</p>
-                    </div>
-                  </div>
-                </div>
-              </v-window-item>
-            </v-window>
-          </div>
-          <v-btn icon @click="nextPage" class="carousel-nav right" color="#4d93c7">
-            <v-icon color="white" size="36">mdi-chevron-right</v-icon>
-          </v-btn>
-        </div>
-      </v-container>
-    </div>
-  </section> -->
   <section class="develop-section">
     <v-container>
       <h2 class="section-title">Development</h2>

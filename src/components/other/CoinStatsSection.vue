@@ -41,17 +41,22 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section coin-stats-section">
-    <img
-      src="@/assets/landing_sections/landing_section_ff.svg"
-      alt="Coin Stats Background"
-      class="section-background"
-    />
-    <div class="content-wrapper">
-      <v-container class="h-100 d-flex flex-column align-center justify-center">
-        <h2 class="section-title">Coin Stats</h2>
-        <div class="stats-grid">
-          <div class="stat-item" v-for="(item, index) in statItems" :key="index">
+  <section class="coinstats-section">
+    <v-container>
+      <h2 class="section-title">Coin Stats</h2>
+      <v-container>
+        <v-row class="card-row">
+          <v-col
+            cols="12"
+            xs="12"
+            sm="12"
+            md="4"
+            lg="2"
+            xl="2"
+            v-for="(item, index) in statItems"
+            :key="index"
+            class="card-col"
+          >
             <h3 class="stat-heading">{{ item.heading }}</h3>
             <p class="stat-text">{{ item.text }}</p>
             <template v-if="item.detail">
@@ -59,41 +64,20 @@ export default defineComponent({
                 {{ line }}
               </p>
             </template>
-          </div>
-        </div>
+          </v-col>
+        </v-row>
       </v-container>
-    </div>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
-  height: 730px;
+.coinstats-section {
+  height: 450px;
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-
-  &.coin-stats-section {
-    z-index: 3;
-    margin-top: -120px;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
 
   .section-title {
     font-family: 'Futura', sans-serif;
@@ -101,23 +85,22 @@ export default defineComponent({
     font-weight: bold;
     color: #000000;
     text-align: center;
-    margin-bottom: 2rem;
   }
 
-  .stats-grid {
+  .card-row {
+    max-width: 1200px;
     display: flex;
-    flex-direction: row;
+    align-items: start;
     justify-content: center;
-    align-items: flex-start;
-    gap: 4rem;
-    flex-wrap: wrap;
+    margin: 0 auto;
   }
 
-  .stat-item {
+  .card-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    margin-bottom: 4rem;
   }
 
   .stat-heading {
@@ -145,46 +128,38 @@ export default defineComponent({
   }
 }
 
-@media (max-width: 959px) {
-  .landing-section {
-    height: auto;
-    min-height: 730px;
-    padding: 2rem 0;
-
-    .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .stats-grid {
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .stat-item {
-      width: 100%;
-      max-width: 300px;
+@media (max-width: 1279px) {
+  .coinstats-section {
+    .card-row {
+      max-width: 700px;
     }
   }
 }
 
-@media (max-width: 600px) {
-  .landing-section {
+@media (max-width: 959px) {
+  .coinstats-section {
+    height: auto;
+    min-height: 450px;
+    padding: 2rem 0;
+
     .section-title {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
     }
 
-    .stats-grid {
-      gap: 1rem;
+    .card-col {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .coinstats-section {
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .card-col {
+      margin: 0;
     }
 
     .stat-heading {
@@ -197,10 +172,6 @@ export default defineComponent({
 
     .stat-detail {
       font-size: 0.8rem;
-    }
-
-    .stat-item {
-      max-width: 250px;
     }
   }
 }
