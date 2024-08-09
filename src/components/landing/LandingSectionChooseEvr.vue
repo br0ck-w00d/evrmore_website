@@ -1,11 +1,11 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import moreSecureImage from '@/assets/advantage/more_secure.svg'
-import easyCreationImage from '@/assets/advantage/versatile.svg'
+import moreSecureImage from '@/assets/choose_evr/more_secure.svg'
+import easyCreationImage from '@/assets/choose_evr/versatile.svg'
 import communityImage from '@/assets/socials/community.svg'
 
 export default defineComponent({
-  name: 'AdvantageSection',
+  name: 'ChooseEvrSection',
   props: {
     backgroundImageName: {
       type: String,
@@ -42,9 +42,9 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="advantage-section">
+  <section class="choose-evr-section">
     <v-container>
-      <h2 class="section-title">Advantages</h2>
+      <h2 class="section-title">Choose Evrmore</h2>
       <v-container variant="text">
         <v-row class="card-row">
           <v-col
@@ -68,7 +68,7 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.advantage-section {
+.choose-evr-section {
   height: 730px;
   width: 100%;
   display: flex;
@@ -117,7 +117,7 @@ export default defineComponent({
 }
 
 @media (max-width: 1279px) {
-  .advantage-section {
+  .choose-evr-section {
     height: auto;
 
     .card-image {
@@ -128,7 +128,7 @@ export default defineComponent({
 }
 
 @media (max-width: 959px) {
-  .advantage-section {
+  .choose-evr-section {
     .section-title {
       font-size: 2rem;
       margin-bottom: 1.5rem;
@@ -145,7 +145,7 @@ export default defineComponent({
 }
 
 @media (max-width: 599px) {
-  .advantage-section {
+  .choose-evr-section {
     .section-title {
       font-size: 1.75rem;
       margin-bottom: 1rem;
