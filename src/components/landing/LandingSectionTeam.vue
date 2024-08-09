@@ -55,50 +55,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <!-- <section class="landing-section team-section">
-    <img :src="backgroundImageComputed" alt="Team Background" class="section-background" />
-    <div class="content-wrapper">
-      <v-container class="d-flex flex-column align-center justify-center h-100">
-        <div class="text-content text-center">
-          <h2>Team</h2>
-          <p>Current & Former Raven Devs, & Hodlers</p>
-        </div>
-        <div class="image-content">
-          <div class="team-member left">
-            <div class="circle-stack">
-              <div
-                v-for="(social, index) in teamMembers[0].socials"
-                :key="index"
-                class="circle-logo"
-                :class="{ 'top-circle': index === 0 }"
-                :style="{ zIndex: teamMembers[0].socials.length - index }"
-                @click="handleClick(social.link)"
-              >
-                <img :src="social.logo" :alt="social.alt" />
-              </div>
-            </div>
-            <p class="member-name">{{ teamMembers[0].name }}</p>
-          </div>
-          <img :src="teamInfo.image" :alt="teamInfo.alt" class="section-image" />
-          <div class="team-member right">
-            <div class="circle-stack">
-              <div
-                v-for="(social, index) in teamMembers[1].socials"
-                :key="index"
-                class="circle-logo"
-                :class="{ 'top-circle': index === 0 }"
-                :style="{ zIndex: teamMembers[1].socials.length - index }"
-                @click="handleClick(social.link)"
-              >
-                <img :src="social.logo" :alt="social.alt" />
-              </div>
-            </div>
-            <p class="member-name">{{ teamMembers[1].name }}</p>
-          </div>
-        </div>
-      </v-container>
-    </div>
-  </section> -->
   <section class="team-section">
     <v-container>
       <div class="text-center section-title">

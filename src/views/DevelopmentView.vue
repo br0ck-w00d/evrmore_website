@@ -58,7 +58,7 @@ export default defineComponent({
       <CodeSection />
       <LandingSectionSix section-title="Roadmap" background-image-name="landing_section_ff.svg" />
       <DevChatSection />
-      <LandingSectionSeven background-image-name="landing_section_2f8.svg" />
+      <LandingSectionSeven background-image-name="landing_section_2f8.png" />
       <LandingSectionEight />
     </div>
   </div>

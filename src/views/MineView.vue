@@ -57,7 +57,7 @@ export default defineComponent({
       <WalletSection />
       <ExchangeSection background-image-name="landing_section_f8.svg" />
       <BenchmarksSection />
-      <LandingSectionSeven background-image-name="landing_section_2ff.svg" />
+      <LandingSectionSeven background-image-name="landing_section_2ff.png" />
       <LandingSectionEight />
     </div>
   </div>

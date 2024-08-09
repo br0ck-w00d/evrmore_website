@@ -56,7 +56,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="resoucres-section">
+  <section class="resources-section">
     <v-container>
       <h2 class="section-title">Resources</h2>
       <v-container>
@@ -73,8 +73,8 @@ export default defineComponent({
             @click="handleClick(item.url)"
             class="card-col"
           >
-            <img v-if="item.image" :src="item.image" :alt="item.text" class="resources-image" />
-            <p class="resources-text">{{ item.text }}</p>
+            <img v-if="item.image" :src="item.image" :alt="item.text" class="resource-image" />
+            <p class="resource-text">{{ item.text }}</p>
           </v-col>
         </v-row>
       </v-container>
@@ -83,7 +83,7 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
-.resoucres-section {
+.resources-section {
   height: 650px;
   width: 100%;
   display: flex;
@@ -130,13 +130,13 @@ export default defineComponent({
     }
   }
 
-  .resources-image {
+  .resource-image {
     width: 160px;
     height: 160px;
     margin-bottom: 10px;
   }
 
-  .resources-text {
+  .resource-text {
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     font-weight: 500;
@@ -147,7 +147,7 @@ export default defineComponent({
 }
 
 @media (max-width: 959px) {
-  .resoucres-section {
+  .resources-section {
     height: auto;
     min-height: 650px;
     padding: 4rem 0;
@@ -160,7 +160,7 @@ export default defineComponent({
       }
     }
 
-    .resources-image {
+    .resource-image {
       width: 120px;
       height: 120px;
       margin-bottom: 10px;
@@ -169,7 +169,7 @@ export default defineComponent({
 }
 
 @media (max-width: 599px) {
-  .resoucres-section {
+  .resources-section {
     .section-title {
       font-size: 1.75rem;
 
@@ -178,12 +178,12 @@ export default defineComponent({
       }
     }
 
-    .resources-image {
+    .resource-image {
       width: 100px;
       height: 100px;
     }
 
-    .resources-text {
+    .resource-text {
       font-size: 0.9rem;
     }
   }

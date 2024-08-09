@@ -126,7 +126,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .benchmarks-section {
-  height: 450px;
+  height: 530px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -223,7 +223,7 @@ export default defineComponent({
 @media (max-width: 959px) {
   .benchmarks-section {
     height: auto;
-    min-height: 450px;
+    min-height: 530px;
     padding: 2rem 0;
 
     .section-title {
