@@ -59,238 +59,144 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="landing-section landing-section-five" :class="{ reverse: reverse }">
-    <img :src="backgroundImageComputed" alt="Section Background" class="section-background" />
-    <div class="content-wrapper">
-      <v-container class="h-100 d-flex align-center justify-center">
-        <v-row align="center" justify="center" no-gutters>
-          <v-col cols="auto" class="text-content">
-            <h2>Showcase</h2>
-            <!-- <p>Easily build your project on Evrmore!</p> -->
-          </v-col>
-          <v-col cols="auto" class="image-grid">
-            <div class="grid-container" :class="{ 'three-items': gridItems.length === 3 }">
-              <div class="grid-row">
-                <div
-                  class="grid-item"
-                  v-for="(item, index) in topRowItems"
-                  :key="index"
-                  @click="handleClick(item.text)"
-                >
-                  <div class="image-container">
-                    <img :src="item.image" :alt="item.text" class="project-image" />
-                  </div>
-                  <p class="placeholder-text">{{ item.text }}</p>
-                </div>
-              </div>
-              <div class="grid-row">
-                <div
-                  class="grid-item"
-                  v-for="(item, index) in bottomRowItems"
-                  :key="index + topRowItems.length"
-                  @click="handleClick(item.text)"
-                >
-                  <div class="image-container">
-                    <img :src="item.image" :alt="item.text" class="project-image" />
-                  </div>
-                  <p class="placeholder-text">{{ item.text }}</p>
-                </div>
-              </div>
+  <section class="projectOne-section">
+    <v-container class="d-flex justify-center">
+      <v-row class="card-row">
+        <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4" class="col-title">
+          <h2 class="section-title">Showcase</h2>
+        </v-col>
+        <v-col cols="12" xs="12" sm="12" md="4" lg="4" xl="4" class="col-image">
+          <div class="col-wrapper">
+            <div
+              v-for="(item, index) in topRowItems"
+              :key="index"
+              @click="handleClick(item.text)"
+              class="card-content"
+            >
+              <img :src="item.image" :alt="item.text" class="project-image" />
+              <p class="placeholder-text">{{ item.text }}</p>
             </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </div>
+          </div>
+          <div class="col-wrapper">
+            <div
+              v-for="(item, index) in bottomRowItems"
+              :key="index + topRowItems.length"
+              @click="handleClick(item.text)"
+              class="card-content"
+            >
+              <img :src="item.image" :alt="item.text" class="project-image" />
+              <p class="placeholder-text">{{ item.text }}</p>
+            </div>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </section>
 </template>
 
 <style scoped lang="scss">
-.landing-section {
-  position: relative;
-  height: 730px;
+.projectOne-section {
+  height: 650px;
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
+  background-image: url('@/assets/landing_sections/landing_section_f8.png');
+  background-size: cover;
+  background-position: center;
 
-  &.landing-section-five {
-    z-index: 3;
-    margin-top: -120px;
-  }
-
-  .section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
-
-  .text-content {
-    color: #000000;
-    padding-right: 12rem;
-    text-align: center;
-
-    h2 {
-      font-family: 'Futura', sans-serif;
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
-    }
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.25rem;
-      line-height: 1.6;
-      opacity: 0.67;
-    }
-  }
-
-  .image-grid {
+  .card-row {
+    max-width: 1200px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
   }
 
-  .grid-container {
+  .col-title {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 400px;
-
-    &.three-items {
-      .grid-row:first-child {
-        justify-content: center;
-      }
-    }
+    justify-content: start;
   }
 
-  .grid-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 30px;
-  }
-
-  .grid-item {
+  .col-image {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+    justify-content: start;
   }
 
-  .image-container {
-    width: 160px;
-    height: 160px;
-    border-radius: 80px;
-    margin-bottom: 10px;
-    overflow: hidden;
+  .section-title {
+    font-family: Futura, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: start;
+  }
+
+  .col-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 4rem;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
   }
 
   .project-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .placeholder-text {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.6;
-    opacity: 0.67;
-    text-align: center;
-  }
-
-  &.reverse {
-    .v-row {
-      flex-direction: row-reverse;
-    }
+    width: 160px;
+    height: 160px;
+    margin-bottom: 1rem;
   }
 }
 
 @media (max-width: 959px) {
-  .landing-section {
+  .projectOne-section {
     height: auto;
-    min-height: 730px;
-    padding: 2rem 0;
+    min-height: 650px;
 
-    .content-wrapper {
-      display: flex;
+    .card-row {
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      flex-wrap: nowrap;
+      margin-top: -350px;
     }
 
-    .text-content {
-      padding-left: 0;
+    .col-title {
+      justify-content: end;
+      height: 100px;
+    }
+
+    .col-image {
+      justify-content: center;
+    }
+
+    .section-title {
       text-align: center;
     }
 
-    .grid-container {
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .grid-row {
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .grid-item {
-      margin: 0 16px;
-    }
-
-    .image-container {
+    .project-image {
       width: 120px;
       height: 120px;
-      border-radius: 60px;
     }
   }
 }
 
-@media (max-width: 600px) {
-  .landing-section {
-    .grid-container {
-      .grid-row {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 0px;
-      }
+@media (max-width: 599px) {
+  .projectOne-section {
+    height: 800px;
+
+    .col-wrapper {
+      flex-direction: column;
+      gap: 0;
     }
 
-    .text-content {
-      padding-bottom: 2rem;
-    }
-
-    .grid-item {
-      margin-bottom: 20px;
-    }
-
-    .image-container {
+    .project-image {
       width: 80px;
       height: 80px;
-      border-radius: 40px;
     }
   }
 }
