@@ -10,9 +10,9 @@ import LandingSectionTeam from '@/components/landing/LandingSectionTeam.vue'
 import LandingSectionLearnMore from '@/components/landing/LandingSectionLearnMore.vue'
 
 // Import SVG images for cards
-import layerOneDefiImage from '@/assets/landing_sections/layer_one_defi.svg'
+import defiRebelsImage from '@/assets/socials/community.svg'
 import hackerImage from '@/assets/choose_evr/hacker.svg'
-import easySwapsImage from '@/assets/landing_sections/easy_swaps.svg'
+import saferSimplerImage from '@/assets/choose_evr/versatile.svg'
 
 export default defineComponent({
   name: 'LandingView',
@@ -50,16 +50,16 @@ export default defineComponent({
       cardAnimations,
       cards: [
         {
-          title: 'Layer One DeFi',
-          image: layerOneDefiImage
+          title: 'DeFi Rebels',
+          image: defiRebelsImage
         },
         {
           title: 'No Contract Hacks',
           image: hackerImage
         },
         {
-          title: 'Easy Swaps',
-          image: easySwapsImage
+          title: 'Safer & Simpler',
+          image: saferSimplerImage
         }
       ]
     }

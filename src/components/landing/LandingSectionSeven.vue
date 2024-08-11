@@ -64,7 +64,7 @@ export default defineComponent({
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" class="text-content">
-            <h2>Join the Community</h2>
+            <h2>Join the Crew</h2>
             <p class="subtitle" @click="navigateToMoreCommunities">More Channels</p>
           </v-col>
         </v-row>

@@ -155,7 +155,7 @@ export default defineComponent({
 <template>
   <section class="develop-section">
     <v-container>
-      <h2 class="section-title">Development</h2>
+      <h2 class="section-title">Track the Mission</h2>
       <div class="roadmap-carousel">
         <v-btn icon @click="prevPage" class="carousel-btn" color="#4d93c7">
           <v-icon color="white" size="32">mdi-chevron-left</v-icon>

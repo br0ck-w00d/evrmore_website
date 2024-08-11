@@ -1,11 +1,11 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import moreSecureImage from '@/assets/choose_evr/more_secure.svg'
-import easyCreationImage from '@/assets/choose_evr/versatile.svg'
-import communityImage from '@/assets/socials/community.svg'
+import bulletProofImage from '@/assets/choose_evr/more_secure.svg'
+import layerOneDefiImage from '@/assets/landing_sections/layer_one_defi.svg'
+import oneClickFinanceImage from '@/assets/landing_sections/easy_swaps.svg'
 
 export default defineComponent({
-  name: 'ChooseEvrSection',
+  name: 'RebelMissionSection',
   props: {
     backgroundImageName: {
       type: String,
@@ -15,18 +15,18 @@ export default defineComponent({
   setup(props) {
     const resourceItems = ref([
       {
-        text: 'More Secure',
-        image: moreSecureImage,
+        text: 'True Layer One',
+        image: layerOneDefiImage,
         url: '#'
       },
       {
-        text: 'Easy Creation',
-        image: easyCreationImage,
+        text: 'Bulletproof Primitives',
+        image: bulletProofImage,
         url: '#'
       },
       {
-        text: 'Community',
-        image: communityImage,
+        text: 'One-Click Finance',
+        image: oneClickFinanceImage,
         url: '#'
       }
     ])
@@ -44,7 +44,7 @@ export default defineComponent({
 <template>
   <section class="choose-evr-section">
     <v-container>
-      <h2 class="section-title">Choose Evrmore</h2>
+      <h2 class="section-title">Rebel Mission</h2>
       <v-container variant="text">
         <v-row class="card-row">
           <v-col
