@@ -54,11 +54,11 @@ export default defineComponent({
           image: defiRebelsImage
         },
         {
-          title: 'No Contract Hacks',
+          title: 'Taking on EVM Chains',
           image: hackerImage
         },
         {
-          title: 'Safer & Simpler',
+          title: 'Safe & Simple',
           image: saferSimplerImage
         }
       ]
