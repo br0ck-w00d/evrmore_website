@@ -6,6 +6,7 @@ import launchImage from '@/assets/roadmap/launch.svg'
 import websiteImage from '@/assets/roadmap/website.svg'
 import whitePaperImage from '@/assets/roadmap/white_paper.svg'
 import bearMarketImage from '@/assets/roadmap/bear_market.svg'
+import { useDisplay } from 'vuetify'
 
 export default defineComponent({
   name: 'LandingSectionSix',
@@ -126,10 +127,12 @@ export default defineComponent({
       }
     }
 
-    const currentPage = ref(1)
-    const itemsPerPage = 3
+    const { smAndDown } = useDisplay()
 
-    const totalPages = computed(() => Math.ceil(roadmapItems.value.length / itemsPerPage))
+    const currentPage = ref(1)
+    const itemsPerPage = computed(() => (smAndDown.value ? 1 : 3))
+
+    const totalPages = computed(() => Math.ceil(roadmapItems.value.length / itemsPerPage.value))
 
     const nextPage = () => {
       currentPage.value = (currentPage.value + 1) % totalPages.value

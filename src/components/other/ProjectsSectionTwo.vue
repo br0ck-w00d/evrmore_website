@@ -145,12 +145,26 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    cursor: pointer;
   }
 
   .project-image {
     width: 160px;
     height: 160px;
     margin-bottom: 1rem;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 }
 
