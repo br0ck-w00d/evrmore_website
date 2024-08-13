@@ -2,6 +2,7 @@
 import { defineComponent, ref, computed } from 'vue'
 import amdImage from '@/assets/mining/amd.svg'
 import nvidiaImage from '@/assets/mining/nvidia.svg'
+import { useDisplay } from 'vuetify'
 
 export default defineComponent({
   name: 'BenchmarksSection',
@@ -64,10 +65,12 @@ export default defineComponent({
       { text: 'RX 6500 XT', image: amdImage, url: 'https://hashrate.no/gpus/6500xt/EVR' }
     ])
 
-    const currentPage = ref(0)
-    const itemsPerPage = 3
+    const { smAndDown } = useDisplay()
 
-    const totalPages = computed(() => Math.ceil(resourceItems.value.length / itemsPerPage))
+    const currentPage = ref(0)
+    const itemsPerPage = computed(() => (smAndDown.value ? 1 : 3))
+
+    const totalPages = computed(() => Math.ceil(resourceItems.value.length / itemsPerPage.value))
 
     const handleClick = (url: string) => {
       window.open(url, '_blank')
@@ -229,6 +232,10 @@ export default defineComponent({
     .section-title {
       font-size: 2rem;
       margin-bottom: 1.5rem;
+    }
+
+    .resource-carousel {
+      max-width: 400px;
     }
 
     .resource-grid {

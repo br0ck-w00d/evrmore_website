@@ -123,6 +123,7 @@ export default defineComponent({
   background-position: center;
   padding: 1rem;
   height: 100vh;
+  min-height: 850px;
 
   .header-wrapper {
     display: flex;

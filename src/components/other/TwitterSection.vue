@@ -6,6 +6,7 @@ import evrmoreOldImage from '@/assets/logo_pack/logo_old.png'
 import evrFoundationImage from '@/assets/socials/evr_foundation.svg'
 import evrDefiImage from '@/assets/socials/evr_defi.jpeg'
 import namelessEvrImage from '@/assets/socials/nameless_evr.jpeg'
+import { useDisplay } from 'vuetify'
 
 export default defineComponent({
   name: 'TwitterSection',
@@ -43,10 +44,12 @@ export default defineComponent({
       }
     ])
 
-    const currentPage = ref(0)
-    const itemsPerPage = 3
+    const { smAndDown } = useDisplay()
 
-    const totalPages = computed(() => Math.ceil(resourceItems.value.length / itemsPerPage))
+    const currentPage = ref(0)
+    const itemsPerPage = computed(() => (smAndDown.value ? 1 : 3))
+
+    const totalPages = computed(() => Math.ceil(resourceItems.value.length / itemsPerPage.value))
 
     const handleClick = (url: string) => {
       window.open(url, '_blank')
@@ -210,6 +213,10 @@ export default defineComponent({
 
     .section-title {
       font-size: 2rem;
+    }
+
+    .resource-carousel {
+      max-width: 400px;
     }
 
     .resource-grid {
