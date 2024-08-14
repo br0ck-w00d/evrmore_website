@@ -15,7 +15,7 @@ export default defineComponent({
   setup(props) {
     const resourceItems = ref([
       {
-        text: 'True Layer One',
+        text: 'Layer One Defi',
         image: layerOneDefiImage,
         url: '#'
       },
