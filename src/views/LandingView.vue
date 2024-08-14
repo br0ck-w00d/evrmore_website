@@ -54,7 +54,7 @@ export default defineComponent({
           image: defiRebelsImage
         },
         {
-          title: 'Taking on EVM Chains',
+          title: 'Taking on ETH',
           image: hackerImage
         },
         {
