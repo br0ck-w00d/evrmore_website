@@ -36,20 +36,28 @@ export default defineComponent({
         .href
     })
 
-    const handleClick = (itemText: string) => {
+    const handleClick = (itemText: string, event: Event) => {
+      event.preventDefault()
+      event.stopPropagation()
       console.log('Clicked', itemText)
+      let url = ''
       switch (itemText) {
         case 'Satori (AI)':
-          window.open('https://www.satorinet.io', '_blank')
+          url = 'https://www.satorinet.io'
           break
         case 'Little Warriors':
-          window.open('https://x.com/litl_warriors', '_blank')
+          url = 'https://www.x.com/litl_warriors'
           break
         case 'Dark Meme':
-          window.open('https://www.darkmemecoin.com/', '_blank')
+          url = 'https://www.darkmemecoin.com/'
           break
         default:
-          break
+          console.log('No URL defined for', itemText)
+          return
+      }
+
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer')
       }
     }
 
@@ -70,7 +78,7 @@ export default defineComponent({
             <div
               v-for="(item, index) in topRowItems"
               :key="index"
-              @click="handleClick(item.text)"
+              @click.stop="(event) => handleClick(item.text, event)"
               class="card-content"
             >
               <img :src="item.image" :alt="item.text" class="project-image" />
@@ -81,7 +89,7 @@ export default defineComponent({
             <div
               v-for="(item, index) in bottomRowItems"
               :key="index + topRowItems.length"
-              @click="handleClick(item.text)"
+              @click.stop="(event) => handleClick(item.text, event)"
               class="card-content"
             >
               <img :src="item.image" :alt="item.text" class="project-image" />
@@ -143,6 +151,8 @@ export default defineComponent({
     align-items: center;
     margin-bottom: 2rem;
     cursor: pointer;
+    position: relative;
+    z-index: 10;
   }
 
   .project-image {
@@ -150,17 +160,14 @@ export default defineComponent({
     height: 160px;
     margin-bottom: 1rem;
     cursor: pointer;
-    transition:
-      transform 0.2s ease,
-      opacity 0.3s ease;
+    transition: transform 0.2s ease;
 
     &:hover {
       transform: scale(1.05);
-      z-index: 1;
     }
 
     &:active {
-      transform: scale(0.95);
+      transform: scale(0.98);
     }
   }
 }

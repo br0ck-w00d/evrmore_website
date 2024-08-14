@@ -16,7 +16,7 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props) {
+  setup() {
     const gridItems = ref([
       { text: 'EvrLand', image: evrlandImage },
       { text: 'CateCoins', image: cateImage },
@@ -31,29 +31,30 @@ export default defineComponent({
       gridItems.value.length === 3 ? gridItems.value.slice(1) : gridItems.value.slice(2)
     )
 
-    const backgroundImageComputed = computed(() => {
-      return new URL(`/src/assets/landing_sections/${props.backgroundImageName}`, import.meta.url)
-        .href
-    })
-
     const handleClick = (itemText: string) => {
-      console.log('Clicked')
+      console.log('Clicked', itemText)
+      let url = ''
       switch (itemText) {
-        case 'Evrland':
-          window.open('https://evrland.net/', '_blank')
+        case 'EvrLand':
+          url = 'https://www.evrland.net/'
           break
         case 'CateCoins':
-          window.open('https://catecoins.com', '_blank')
+          url = 'https://www.catecoins.com'
           break
         case 'Magic':
-          window.open('https://twitter.com/magicwalletapp', '_blank')
+          url = 'https://www.x.com/magicwalletapp'
           break
         default:
-          break
+          console.log('No URL defined for', itemText)
+          return
+      }
+
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer')
       }
     }
 
-    return { gridItems, topRowItems, bottomRowItems, handleClick, backgroundImageComputed }
+    return { gridItems, topRowItems, bottomRowItems, handleClick }
   }
 })
 </script>
@@ -146,6 +147,11 @@ export default defineComponent({
     align-items: center;
     margin-bottom: 2rem;
     cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 
   .project-image {
@@ -153,17 +159,14 @@ export default defineComponent({
     height: 160px;
     margin-bottom: 1rem;
     cursor: pointer;
-    transition:
-      transform 0.2s ease,
-      opacity 0.3s ease;
+    transition: transform 0.2s ease;
 
     &:hover {
       transform: scale(1.05);
-      z-index: 1;
     }
 
     &:active {
-      transform: scale(0.95);
+      transform: scale(0.98);
     }
   }
 }
