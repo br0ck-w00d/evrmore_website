@@ -59,7 +59,7 @@ export default defineComponent({
     <v-container>
       <div class="text-center section-title">
         <h2>Team</h2>
-        <p>Ravencoin's Brightest, Redefining DeFi</p>
+        <p>Bitcoin OGs & Proven Blockchain Devs</p>
       </div>
       <div class="image-content">
         <div class="team-member left">
