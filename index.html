@@ -6,22 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evrmore</title>
     <script>
-      ;(function () {
-        var trackingId = window.VUE_APP_GA_TRACKING_ID
-        if (trackingId) {
-          var script = document.createElement('script')
-          script.async = true
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=' + trackingId
-          document.head.appendChild(script)
-
-          window.dataLayer = window.dataLayer || []
-          function gtag() {
-            dataLayer.push(arguments)
-          }
-          gtag('js', new Date())
-          gtag('config', trackingId)
-        }
-      })()
+      fetch('/.env')
+        .then((response) => response.text())
+        .then((text) => {
+          const env = {}
+          text.split('\n').forEach((line) => {
+            const [key, value] = line.split('=')
+            if (key && value) {
+              env[key.trim()] = value.trim()
+            }
+          })
+          window.ENV = env
+        })
     </script>
   </head>
   <body>
