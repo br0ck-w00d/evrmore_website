@@ -7,7 +7,7 @@
     <title>Evrmore</title>
     <script>
       ;(function () {
-        var trackingId = process.env.VUE_APP_GA_TRACKING_ID
+        var trackingId = window.VUE_APP_GA_TRACKING_ID
         if (trackingId) {
           var script = document.createElement('script')
           script.async = true
